@@ -22,7 +22,10 @@ double canberra(vector<double> vec1, vector<double> vec2, int size)
     double sum = 0;
     for (i = 0; i < size; i++)
     {
-        sum += (abs(vec1[i] - vec2[i])) / (abs(vec1[i]) + abs(vec2[i]));
+        if (vec2[i] != 0 || vec1[i] != 0)
+        {
+            sum += (abs(vec1[i] - vec2[i])) / (abs(vec1[i]) + abs(vec2[i]));
+        }
     }
     return sum;
 }

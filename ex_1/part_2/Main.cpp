@@ -18,36 +18,39 @@ int main()
 
     getline(cin, vec1);
     getline(cin, vec2);
-    
-    stringstream v1(vec1);
-    while (v1 >> word){
-        if (!is digit(word[0])){
 
-        }
-    }
-    s(vec1);
-
-    turnToVectors(vec1, vec2);
+    turnToVecto(vec1, v1);
 
     if (!validInput)
     {
         cout << "invalid input, goodbye" return 0;
     }
     int size = sizeof(vectors[0]);
-    cout << euclidean(vectors[0], vectors[1], size) << endl 
-    cout << manhattan(vectors[0], vectors[1], size) << endl 
-    cout << chebyshev(vectors[0], vectors[1], size) << endl 
-    cout << canberra(vectors[0], vectors[1], size) << endl 
-    cout << minkowski(vectors[0], vectors[1], size, 2) << endl return 0;
+    cout << euclidean(v1, v2, size) << endl;
+    cout << manhattan(v1, v2, size) << endl;
+    cout << chebyshev(v1, v2, size) << endl;
+    cout << canberra(v1, v2, size) << endl;
+    cout << minkowski(v1, v2, size, 2) << endl;
+    return 0;
 }
 
 /*
 Checks if the input is correct.
 If it is, converts the vectors to double arrays in the procces.
 */
-int validInput(string vec1, string ves2){
-    vectors[0] = nu
-
-turnToVectors()
+int validInput(string vec1, string ves2)
 {
+    vectors[0] = nu
+}
+
+void turnToVector()
+{
+    stringstream v1(vec1);
+    while (v1 >> word)
+    {
+        if (!is digit(word[0]))
+        {
+        }
+    }
+    s(vec1);
 }
