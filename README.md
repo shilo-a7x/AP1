@@ -18,7 +18,7 @@ If needed, the p parameter in the Minkosky distance can be changed within the ca
 
 
 <h2>Code execution command:</h2>
-In the terminal, type the following line:<br />
+In the terminal, type the following line (while in ex_1/part_2/ dir):<br />
 <code>  g++ -std=c++11 main.cpp vecDistances.cpp -o a.out </code><br />
 And then type:<br />
 <code> ./a.out </code><br />
