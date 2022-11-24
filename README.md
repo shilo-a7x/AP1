@@ -1,4 +1,6 @@
-<h1># Ex1_part2</h1>
+<h1>Ex1_part1</h1>
+
+<h1>Ex1_part2</h1>
 The code gets as a user input 2 vectors with element data type of double.<br />
 The size of the vectors are set by the user input, and can be set to any size (within double range).<br />
 If the user enters different size vectors, since mathamaticly it isnt a possible case, the code returns a error message.<br />
@@ -8,9 +10,9 @@ The 4th function divides by 0 therfore if the input is 0 it will return 'nan'<br
 The 5th function (Minkowski distance) the calculation is calculated for order p, the code default is p=2, by inserting a 3rd int argument the function will calculated for the given p.<br />
 
 <h2>To execute the code we need to run the following commands:</h2>
-<code>  g++ -std=c++11 main.cpp Distance.cpp -o <desierd_object_file_name> </code><br />
+<code>  g++ -std=c++11 main.cpp vecDistances.cpp -o a.out </code><br />
 then:<br />
-<code> ./<desierd_object_file_name> </code><br />
+<code> ./a.out </code><br />
 
 <h3> example: </h3>
 in the terminal insert vector elements by row.<br />
