@@ -6,31 +6,56 @@
 
 using namespace std;
 
+// bool is_number(const string& s)
+// {
+// string::const_iterator it = s.begin();
+// while (it != s.end() && std::isdigit(*it)) ++it;
+// return !s.empty() && it == s.end();
+// }
+
+bool is_number(const string& s)
+{
+    long double ld;
+    return((istringstream(s) >> ld >> ws).eof());
+}
+
+
 /*
 Converts a string to double vectors.
 Checks in the procces whether the input is correct.
 If it is, returnes 0;
 */
-int turnToVector(string stringInput, vector<double> v)
+int turnToVector(string stringInput, vector<double> &v)
 {
     stringstream s(stringInput);
     string token;
-    int i;
     double num;
 
     while (s >> token)
     {
-        for (i = 0; i < sizeof(token) - 1; i++)
+        if (!is_number(token))
         {
-            if (!isdigit(word[i]))
-            {
-                return 1;
-            }
-            num = strtod(word.c_str(), 0);
-            v.push_back(num);
+            return 1;
         }
+        num = strtod(token.c_str(), 0);
+        v.push_back(num);
     }
     return 0;
+}
+
+void printDistance(double dis)
+{
+    if (floor(dis) == ceil(dis))
+    {
+        fixed(cout);
+        cout.precision(1);
+    }
+    else
+    {
+        fixed(cout);
+        cout.precision(16);
+    }
+    cout << dis << endl;
 }
 
 /*
@@ -47,20 +72,18 @@ int main()
     getline(cin, stringInput2);
 
     error = turnToVector(stringInput1, v1) + turnToVector(stringInput2, v2);
-    size = sizeof(v1);
+    size = v1.size();
 
-    cout << error << endl;
-
-    if (error || (size != sizeof(v2)))
+    if (error || (size != v2.size()))
     {
         cout << "invalid input, goodbye" << endl;
         return 0;
     }
 
-    cout << euclidean(v1, v2, size) << endl;
-    cout << manhattan(v1, v2, size) << endl;
-    cout << chebyshev(v1, v2, size) << endl;
-    cout << canberra(v1, v2, size) << endl;
-    cout << minkowski(v1, v2, size, 2) << endl;
+    printDistance(euclidean(v1, v2, size));
+    printDistance(manhattan(v1, v2, size));
+    printDistance(chebyshev(v1, v2, size));
+    printDistance(canberra(v1, v2, size));
+    printDistance(minkowski(v1, v2, size, 2));
     return 0;
 }

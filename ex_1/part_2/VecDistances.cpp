@@ -12,8 +12,16 @@ double manhattan(vector<double> vec1, vector<double> vec2, int size)
 
 double chebyshev(vector<double> vec1, vector<double> vec2, int size)
 {
-    int inf = numeric_limits<int>::max();
-    return minkowski(vec1, vec2, size, inf);
+    double max = 0;
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        if (max < abs(vec1[i] - vec2[i]))
+        {
+            max = abs(vec1[i] - vec2[i]);
+        }
+    }
+    return max;
 }
 
 double canberra(vector<double> vec1, vector<double> vec2, int size)
@@ -36,17 +44,7 @@ double minkowski(vector<double> vec1, vector<double> vec2, int size, double r)
     int i;
     for (i = 0; i < size; i++)
     {
-        sum += pow(vec1[i] - vec2[i], r);
+        sum += pow(abs(vec1[i] - vec2[i]), r);
     }
     return pow(sum, 1.0 / r);
 }
-
-// double max = 0;
-// int i;
-// for (i = 0; i < size; i++)
-// {
-//     if (max < abs(vec1[i] - vec2[i]))
-//     {
-//         max = abs(vec1[i] - vec2[i]);
-//     }
-// }
