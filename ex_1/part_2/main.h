@@ -1,4 +1,4 @@
-// header file for the main.cpp file. 
+// header file for the Main.cpp file. 
 #include <iostream>
 #include <sstream>
 #include <vector>

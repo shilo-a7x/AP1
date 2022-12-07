@@ -1,4 +1,4 @@
-// header file for the vecdistances.cpp file.
+// header file for the Vecdistances.cpp file.
 #include <cmath>
 #include <vector>
 
