@@ -1,4 +1,4 @@
-#include "main.h"
+#include "Main.h"
 
 /*
 Calculates the distance between 2 given vectors.
