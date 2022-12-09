@@ -1,0 +1,12 @@
+// header file for the Vecdistances.cpp file.
+#include <cmath>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+double euclidean(vector<double> vec1, vector<double> vec2, int size);
+double manhattan(vector<double> vec1, vector<double> vec2, int size);
+double chebyshev(vector<double> vec1, vector<double> vec2, int size);
+double canberra(vector<double> vec1, vector<double> vec2, int size);
+double minkowski(vector<double> vec1, vector<double> vec2, int size, double r);
