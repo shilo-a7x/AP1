@@ -11,8 +11,11 @@ class Classifiable {
         string label;
         vector<double> coordinates;
         bool isClassified;
+        double distance = 0;
     public:
         string getLable();
+        double setDistance();
+        double getDistance();
         vector<Classifiable> toVector(const vector<vector<string>> &data, bool isClassified);
 };
 
