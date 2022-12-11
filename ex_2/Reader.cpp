@@ -5,11 +5,11 @@
 
 
 vector<vector<string>> Reader::readCSV(const string &path) {
-    vector<vector<string>> data;
     ifstream inputFile(path);
     if (!inputFile.is_open()) {
-        return;
+        throw ios_base::failure("File not found");
     }
+    vector<vector<string>> data;
     stringstream outStream;
     outStream << inputFile.rdbuf();
     string csv = outStream.str();
