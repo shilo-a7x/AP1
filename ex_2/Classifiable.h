@@ -13,9 +13,12 @@ class Classifiable {
         bool isClassified;
         double distance = 0;
     public:
-        string getLable();
-        double setDistance();
-        double getDistance();
+        Classifiable(const vector<string> &v, bool isClassified);
+        Classifiable(const Classifiable &unclassified, string label);
+        string getLable() const;
+        vector<double> getCoordinates() const;
+        double getDistance() const;
+        double setDistance(double d);
         vector<Classifiable> toVector(const vector<vector<string>> &data, bool isClassified);
 };
 
