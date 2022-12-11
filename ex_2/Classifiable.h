@@ -13,6 +13,7 @@ class Classifiable {
         bool isClassified;
     public:
         string getLable();
+        vector<Classifiable> toVector(const vector<vector<string>> &data, bool isClassified);
 };
 
 #endif
