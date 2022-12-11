@@ -1,5 +1,4 @@
 #include "Algorithm.h"
-#include "Distance.cpp"
 
 class Algorithm
 {
