@@ -9,4 +9,4 @@ double euclidean(vector<double> vec1, vector<double> vec2, int size);
 double manhattan(vector<double> vec1, vector<double> vec2, int size);
 double chebyshev(vector<double> vec1, vector<double> vec2, int size);
 double canberra(vector<double> vec1, vector<double> vec2, int size);
-double minkowski(vector<double> vec1, vector<double> vec2, int size, double p = 2);
+double minkowski(vector<double> vec1, vector<double> vec2, int size, double p = 3);

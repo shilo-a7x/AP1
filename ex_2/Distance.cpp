@@ -65,7 +65,7 @@ private:
     /*
     Calculates the minkowski distance between two given vectors.
     */
-    double minkowski(vector<double> vec1, vector<double> vec2, int size, double p = 2)
+    double minkowski(vector<double> vec1, vector<double> vec2, int size, double p = 3)
     {
         double sum = 0;
         int i;
