@@ -3,7 +3,6 @@
 class Algorithm
 {
 private:
-    Distance disFunc;
     // Standard partition process of QuickSort().
     // It considers the last element as pivot
     // and moves all smaller element to left of

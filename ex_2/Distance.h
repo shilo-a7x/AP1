@@ -5,8 +5,20 @@
 
 using namespace std;
 
-double euclidean(vector<double> vec1, vector<double> vec2, int size);
-double manhattan(vector<double> vec1, vector<double> vec2, int size);
-double chebyshev(vector<double> vec1, vector<double> vec2, int size);
-double canberra(vector<double> vec1, vector<double> vec2, int size);
-double minkowski(vector<double> vec1, vector<double> vec2, int size, double p = 3);
+class Distance
+{
+private:
+    string type;
+
+    double euclidean(vector<double> vec1, vector<double> vec2, int size);
+    double manhattan(vector<double> vec1, vector<double> vec2, int size);
+    double chebyshev(vector<double> vec1, vector<double> vec2, int size);
+    double canberra(vector<double> vec1, vector<double> vec2, int size);
+    double minkowski(vector<double> vec1, vector<double> vec2, int size, double p = 3);
+
+public:
+
+    Distance(string type);
+    double dis(vector<double> vec1, vector<double> vec2);
+    string getType();
+};
