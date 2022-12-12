@@ -30,7 +30,7 @@ double Classifiable::getDistance() const {
     return distance;
 }
 
-double Classifiable::setDistance(double d) {
+void Classifiable::setDistance(double d) {
     distance = d;
 }
 

@@ -18,7 +18,7 @@ class Classifiable {
         string getLable() const;
         vector<double> getCoordinates() const;
         double getDistance() const;
-        double setDistance(double d);
+        void setDistance(double d);
         vector<Classifiable> toVector(const vector<vector<string>> &data, bool isClassified);
 };
 
