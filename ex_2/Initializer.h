@@ -11,21 +11,29 @@ header for the Initializer class.
 
 using namespace std;
 
-class Initializer {
-    private:
-        Distance disFunc;
-    public:
-        Initializer (string type);
-        void setDistance(string newDis);
-        vector<Classifiable> init(vector<Classifiable> vectors, vector<double> v);
+class Initializer
+{
+private:
+    /*
+    Defines which distance method will be used during the initialization.
+     */
+    Distance disFunc;
 
+public:
+    /*
+   Constructor function.
+   */
+    Initializer(string type);
+
+    /*
+   Setter for the disFunc parameter.
+   */
+    void setDidFunc(string newDis);
+
+    /*
+    Initializes all the distance parameters of the vectors according to a given vector
+    */
+    vector<Classifiable> init(vector<Classifiable> vectors, vector<double> v);
 };
-
-
-
-
-
-
-
 
 #endif

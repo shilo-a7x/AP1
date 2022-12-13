@@ -15,9 +15,8 @@ using namespace std;
 class KNN
 {
 private:
-
     /*
-    Two classes that holds the functions that KNN uses.
+    Two classes that holds the functions that lunchKNN uses.
     */
     Initializer starter;
     Algorithm algo;
