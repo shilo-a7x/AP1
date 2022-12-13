@@ -5,7 +5,8 @@ Algorithm::Algorithm(int K)
     this->K = K;
 }
 
-int Algorithm::getK(){
+int Algorithm::getK()
+{
     return this->K;
 }
 
