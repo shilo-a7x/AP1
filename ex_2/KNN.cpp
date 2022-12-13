@@ -2,8 +2,10 @@
 
 KNN::KNN(string type, int K) : starter(type) , algo(K) {}
 
-string lunchKNN(vector<Classifiable> vectors)
+string KNN::lunchKNN(vector<Classifiable> &vectors, vector<double> v)
 {
-    this.starter.init(vectors);
-    this.algo.QuickSelect(vectors)
+    starter.init(vectors, v);
+    double maxDis = algo.QuickSelect(vectors, 0, vectors.size(), this->algo.getK());
+    vector<Classifiable> closest= algo.KClosest(maxDis, vectors);
+    return algo.mostCommon(closest);
 }

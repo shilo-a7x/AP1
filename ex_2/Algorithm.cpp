@@ -1,18 +1,23 @@
 #include "Algorithm.h"
 
-Algorithm::Algorithm(int K){
+Algorithm::Algorithm(int K)
+{
     this->K = K;
+}
+
+int Algorithm::getK(){
+    return this->K;
 }
 
 // Standard partition process of QuickSort().
 // It considers the last element as pivot
 // and moves all smaller element to left of
 // it and greater elements to right
-int partition(vector<Classifiable> vectors, int l, int r)
+int Algorithm::partition(vector<Classifiable> &vectors, int l, int r)
 {
     double x = vectors[r].getDistance();
-    int i = l;
-    for (int j = l; j <= r - 1; j++)
+    int i = l, j;
+    for (j = l; j <= r - 1; j++)
     {
         if (vectors[j].getDistance() <= x)
         {
@@ -28,7 +33,7 @@ int partition(vector<Classifiable> vectors, int l, int r)
 // element in arr[l..r] using QuickSort
 // based method.  ASSUMPTION: ALL ELEMENTS
 // IN ARR[] ARE DISTINCT
-int QuickSelect(vector<Classifiable> vectors, int l, int r, int k)
+double Algorithm::QuickSelect(vector<Classifiable> &vectors, int l, int r, int k)
 {
     // If k is smaller than number of
     // elements in array
@@ -42,7 +47,7 @@ int QuickSelect(vector<Classifiable> vectors, int l, int r, int k)
 
         // If position is same as k
         if (index - l == k - 1)
-            return index;
+            return vectors[index].getDistance();
 
         // If position is more, recur
         // for left subarray
@@ -50,23 +55,27 @@ int QuickSelect(vector<Classifiable> vectors, int l, int r, int k)
             return QuickSelect(vectors, l, index - 1, k);
 
         // Else recur for right subarray
-        return QuickSelect(vectors, index + 1, r,
-                           k - index + l - 1);
+        return QuickSelect(vectors, index + 1, r, k - index + l - 1);
     }
 
     // If k is more than number of
     // elements in array
     return 0;
 }
-vector<Classifiable> KClosest(double maxDis, vector<Classifiable> vectors)
+vector<Classifiable> Algorithm::KClosest(double maxDis, vector<Classifiable> &vectors)
 {
-    vector<Classifiable> Kclosest = new vector<Classifiable>;
+    vector<Classifiable> Kclosest;
     int i;
-    for (i = 0; i < vectors.size(); i++ {
-             if (vectors[i].getDistane() <)
-         })
+    for (i = 0; i < vectors.size(); i++)
+    {
+        if (vectors[i].getDistance() <= maxDis)
+        {
+            Kclosest.push_back(vectors[i]);
+        }
+    }
+    return Kclosest;
 }
 
-string mostCommon(vector<Classifiable> vectors)
+string Algorithm::mostCommon(vector<Classifiable> vectors)
 {
 }

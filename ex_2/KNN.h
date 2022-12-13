@@ -15,7 +15,7 @@ private:
     Algorithm algo;
 public:
     KNN(string type, int K);
-    string lunchKNN(vector<Classifiable> vectors);
+    string lunchKNN(vector<Classifiable> &vectors, vector<double> v);
 };
 
 #endif
