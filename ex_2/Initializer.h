@@ -1,7 +1,6 @@
 #ifndef INITIALIZER_H
 #define INITIALIZER_H
 
-#include <iostream>
 #include <vector>
 #include "Distance.cpp"
 #include "Classifiable.h"

@@ -58,4 +58,16 @@ public:
         // elements in array
         return 0;
     }
+    vector<Classifiable> KClosest(double maxDis, vector<Classifiable> vectors)
+    {
+        vector<Classifiable> Kclosest = new vector<Classifiable>;
+        int i;
+        for (i = 0; i < vectors.size(); i++{
+            if(vectors[i].getDistane() < )
+        })
+    }
+
+    string mostCommon(vector<Classifiable> vectors)
+    {
+    }
 };
