@@ -13,8 +13,14 @@ vector<vector<string>> Reader::readCSV(const string &path) {
     stringstream outStream;
     outStream << inputFile.rdbuf();
     string csv = outStream.str();
-    for (const auto &line : split(csv, '\n')) {
+    vector<string> lines = split(csv, '\n');
+    int csvWidth = split(lines[0], ',').size();
+    for (const auto &line : lines) {
         vector<string> row = split(line, ',');
+        int rowLen = row.size();
+        if (rowLen != csvWidth) {
+            throw runtime_error("File is not in valid csv format");
+        }
         if (!row.empty()) {
             data.push_back(row);
         }

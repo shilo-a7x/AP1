@@ -19,7 +19,7 @@ class Classifiable {
         vector<double> getCoordinates() const;
         double getDistance() const;
         void setDistance(double d);
-        vector<Classifiable> toVector(const vector<vector<string>> &data, bool isClassified);
+        static vector<Classifiable> toVector(const vector<vector<string>> &data, bool isClassified);
 };
 
 #endif
