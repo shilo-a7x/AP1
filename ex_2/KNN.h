@@ -8,14 +8,14 @@
 
 using namespace std;
 
-class KNN {
-    private:
-        Initializer initializer;
-        Algorithm algorithm;
-    public:
-        KNN (string type);
-
-        string fftAlgorithm(vector<Classifiable> vectors);
+class KNN
+{
+private:
+    Initializer starter;
+    Algorithm algo;
+public:
+    KNN(string type, int K);
+    string lunchKNN(vector<Classifiable> vectors);
 };
 
 #endif
