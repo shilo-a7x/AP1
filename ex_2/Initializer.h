@@ -15,11 +15,4 @@ class Initializer {
         vector<Classifiable> init(vector<Classifiable> vectors, vector<double> v);
 };
 
-
-
-
-
-
-
-
 #endif
