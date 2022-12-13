@@ -34,3 +34,10 @@ void Classifiable::setDistance(double d) {
     distance = d;
 }
 
+vector<Classifiable> Classifiable::toVector(const vector<vector<string>> &data, bool isClassified) {
+    vector<Classifiable> vOut;
+    for (const auto &v : data) {
+        vOut.push_back(Classifiable(v, isClassified));
+    }
+    return vOut;
+}
