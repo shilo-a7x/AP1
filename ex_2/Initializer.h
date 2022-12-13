@@ -1,3 +1,7 @@
+/*
+header for the Initializer class.
+*/
+
 #ifndef INITIALIZER_H
 #define INITIALIZER_H
 

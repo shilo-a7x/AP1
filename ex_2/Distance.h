@@ -1,4 +1,7 @@
-// header file for the Vecdistances.cpp file.
+/*
+header for the Distance class.
+*/
+
 #include <cmath>
 #include <vector>
 #include <string>
@@ -10,6 +13,9 @@ class Distance
 private:
     string type;
 
+    /*
+    
+    */
     double euclidean(vector<double> vec1, vector<double> vec2, int size);
     double manhattan(vector<double> vec1, vector<double> vec2, int size);
     double chebyshev(vector<double> vec1, vector<double> vec2, int size);

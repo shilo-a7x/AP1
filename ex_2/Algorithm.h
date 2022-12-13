@@ -1,3 +1,7 @@
+/*
+header for the Algorithm class.
+*/
+
 #include <string>
 #include <map>
 #include "Distance.cpp"

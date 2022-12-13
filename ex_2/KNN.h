@@ -1,5 +1,5 @@
 /*
-h-fine for the KNN class.
+header for the KNN class.
 */
 
 #ifndef KNN_H
