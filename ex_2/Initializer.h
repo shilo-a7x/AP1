@@ -12,7 +12,9 @@ class Initializer {
         Distance disFunc;
     public:
         Initializer (string type);
+        void setDistance(string newDis);
         vector<Classifiable> init(vector<Classifiable> vectors, vector<double> v);
+
 };
 
 

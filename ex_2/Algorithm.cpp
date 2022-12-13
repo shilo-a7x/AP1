@@ -10,6 +10,11 @@ int Algorithm::getK()
     return this->K;
 }
 
+void Algorithm::setK(int newK)
+{
+    this->K = newK;
+}
+
 // Standard partition process of QuickSort().
 // It considers the last element as pivot
 // and moves all smaller element to left of
@@ -79,4 +84,24 @@ vector<Classifiable> Algorithm::KClosest(double maxDis, vector<Classifiable> &ve
 
 string Algorithm::mostCommon(vector<Classifiable> vectors)
 {
+    map<string, int> map;
+    int i, max = 0;
+    string mostCommonString;
+    for (i = 0; i < vectors.size(); i++)
+    {
+        if (map.count(vectors[i].getLable()) == 0)
+        {
+            map[vectors[i].getLable()] = 0;
+        }
+        map[vectors[i].getLable()]++;
+    }
+    for (const auto &pair : map)
+    {
+        if (max < pair.second)
+        {
+            max = pair.second;
+            mostCommonString = pair.first;
+        }
+    }
+    return mostCommonString;
 }

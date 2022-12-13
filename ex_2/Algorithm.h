@@ -14,6 +14,7 @@ private:
 public:
     Algorithm(int K);
     int getK();
+    void setK(int newK);
     double QuickSelect(vector<Classifiable> &vectors, int l, int r, int k);
     vector<Classifiable> KClosest(double maxDis, vector<Classifiable> &vectors);
     string mostCommon(vector<Classifiable> vectors);

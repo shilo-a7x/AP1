@@ -1,8 +1,5 @@
 #include "Distance.h"
 
-/*
-Constructor
-*/
 Distance::Distance(string type)
 {
     if (!type.compare("MAN") || !type.compare("AUC") || !type.compare("CHB") || !type.compare("CAN") || !type.compare("MIN"))
@@ -13,6 +10,10 @@ Distance::Distance(string type)
     {
         this->type = "ERR";
     }
+}
+
+void Distance::setType(string newType){
+    this->type = newType;
 }
 
 /*
@@ -38,7 +39,7 @@ double Distance::dis(vector<double> vec1, vector<double> vec2)
     }
     if (!this->type.compare("MIN"))
     {
-        return this->minkowski(vec1, vec2, vec1.size(), 0.5);
+        return this->minkowski(vec1, vec2, vec1.size());
     }
     return 0;
 }
