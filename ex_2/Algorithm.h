@@ -51,9 +51,9 @@ public:
     double QuickSelect(vector<Classifiable> &vectors, int l, int r, int k);
 
     /*
-    Gets a distance and returns all the vectors that their distances are <= maxDis.
+    Returns a vector of the k smallest elements
     */
-    vector<Classifiable> KClosest(double maxDis, vector<Classifiable> &vectors);
+    vector<Classifiable> KClosest(vector<Classifiable> &vectors, int k);
 
     /*
     Returns the most common string among all the Classifiables in a given Classifiable vector.
