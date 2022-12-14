@@ -2,23 +2,29 @@
 
 Distance::Distance(string type)
 {
+    // Makes sure that the distance type we are using is legit.
     if (!type.compare("MAN") || !type.compare("AUC") || !type.compare("CHB") || !type.compare("CAN") || !type.compare("MIN"))
     {
         this->type = type;
     }
+
+    // Puts 'ERR' in the string.
     else
     {
         this->type = "ERR";
     }
 }
 
-void Distance::setType(string newType){
+string Distance::getType()
+{
+    return this->type;
+}
+
+void Distance::setType(string newType)
+{
     this->type = newType;
 }
 
-/*
-Determines which distance function to apply once called.
-*/
 double Distance::dis(vector<double> vec1, vector<double> vec2)
 {
     if (!this->type.compare("MAN"))
@@ -41,35 +47,23 @@ double Distance::dis(vector<double> vec1, vector<double> vec2)
     {
         return this->minkowski(vec1, vec2, vec1.size());
     }
+
+    // If the type is not valid then just take all the vectors.
     return 0;
 }
 
-string Distance::getType()
-{
-    return this->type;
-}
-
-/*
-Calculates the euclidean distance between two given vectors.
-*/
 double Distance::euclidean(vector<double> vec1, vector<double> vec2, int size)
 {
     // get the distance using the minkowsky distance with p=2.
     return minkowski(vec1, vec2, size, 2);
 }
 
-/*
-Calculates the manhattan distance between two given vectors.
-*/
 double Distance::manhattan(vector<double> vec1, vector<double> vec2, int size)
 {
     // get the distance using the minkowsky distance with p=1.
     return minkowski(vec1, vec2, size, 1);
 }
 
-/*
-Calculates the chebyshev distance between two given vectors.
-*/
 double Distance::chebyshev(vector<double> vec1, vector<double> vec2, int size)
 {
     double max = 0;
@@ -87,9 +81,6 @@ double Distance::chebyshev(vector<double> vec1, vector<double> vec2, int size)
     return max;
 }
 
-/*
-Calculates the canberra distance between two given vectors.
-*/
 double Distance::canberra(vector<double> vec1, vector<double> vec2, int size)
 {
     int i;
@@ -106,9 +97,6 @@ double Distance::canberra(vector<double> vec1, vector<double> vec2, int size)
     return sum;
 }
 
-/*
-Calculates the minkowski distance between two given vectors.
-*/
 double Distance::minkowski(vector<double> vec1, vector<double> vec2, int size, double p)
 {
     double sum = 0;

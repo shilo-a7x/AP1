@@ -1,5 +1,5 @@
 /*
-h-fine for the KNN class.
+header for the KNN class.
 */
 
 #ifndef KNN_H
@@ -15,9 +15,8 @@ using namespace std;
 class KNN
 {
 private:
-
     /*
-    Two classes that holds the functions that KNN uses.
+    Two classes that holds the functions that lunchKNN uses.
     */
     Initializer starter;
     Algorithm algo;
@@ -36,7 +35,7 @@ public:
     /*
     Uses KNN's members in order to return the most common string in the K closets vectors.
     */
-    string lunchKNN(vector<Classifiable> &vectors, vector<double> v);
+    string lunchKNN(vector<Classifiable> &vectors, vector<double> &v);
 };
 
 #endif

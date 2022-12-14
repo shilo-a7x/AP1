@@ -10,7 +10,7 @@ vector<vector<string>> Reader::readCSV(const string &path) {
         throw ios_base::failure("File not found");
     }
     vector<vector<string>> data;
-    stringstream outStream;
+    ostringstream outStream;
     outStream << inputFile.rdbuf();
     string csv = outStream.str();
     vector<string> lines = split(csv, '\n');
@@ -29,7 +29,7 @@ vector<vector<string>> Reader::readCSV(const string &path) {
 }
 
 vector<string> Reader::split(const string &str, const char delim) {
-    stringstream ss(str);
+    istringstream ss(str);
     string cell;
     vector<string> vec;
     while (getline(ss, cell, delim)) {
