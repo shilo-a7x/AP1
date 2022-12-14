@@ -1,5 +1,4 @@
 #include "KNN.h"
-#include <iostream>
 
 KNN::KNN(string type, int K) : starter(type), algo(K) {}
 
@@ -22,10 +21,6 @@ string KNN::lunchKNN(vector<Classifiable> &vectors, vector<double> &v)
 
     // Picks the k closest vectors from 'Vectors'. in case of ties takes all the ones that their distance is <= maxDis.
     vector<Classifiable> closest = algo.KClosest(vectors, algo.getK());
-    cout << closest.size() <<endl;
-    for(const auto &c : closest) {
-         cout << c.getDistance() << c.getLable() << endl;
-    }
 
     // Return the string that is the most common among the k closest vectors.
     return algo.mostCommon(closest);

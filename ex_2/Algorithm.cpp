@@ -69,9 +69,8 @@ vector<Classifiable> Algorithm::KClosest(vector<Classifiable> &vectors, int k)
     vector<Classifiable> Kclosest;
     int i;
 
-    // If the vector's distance is smaller then the given maxDis, add the vector to the Kclosest vector.
-    for (i = 0; i <= k; i++)
-    {
+    // retrieve the k least elements
+    for (i = 0; i < k; i++) {
             Kclosest.push_back(vectors[i]);
     }
     return Kclosest;
