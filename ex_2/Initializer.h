@@ -6,7 +6,7 @@ header for the Initializer class.
 #define INITIALIZER_H
 
 #include <vector>
-#include "Distance.cpp"
+#include "Distance.h"
 #include "Classifiable.h"
 
 using namespace std;
