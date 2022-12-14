@@ -3,7 +3,7 @@ SOURCE	= Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Mai
 HEADER	= Algorithm.h Classifiable.h Distance.h Initializer.h KNN.h Reader.h
 OUT	= a.out
 CC	 = g++
-FLAGS	 = -g -c -Wall
+FLAGS	 = -g -c
 LFLAGS	 = 
 
 all: $(OBJS)

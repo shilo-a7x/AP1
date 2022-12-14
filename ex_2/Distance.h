@@ -1,4 +1,7 @@
 // header file for the Vecdistances.cpp file.
+#ifndef DISTANCE_H
+#define DISTANCE_H
+
 #include <cmath>
 #include <vector>
 #include <string>
@@ -29,3 +32,5 @@ public:
     string getType();
     void setType(string newType);
 };
+
+#endif

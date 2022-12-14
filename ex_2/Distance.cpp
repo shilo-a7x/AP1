@@ -109,7 +109,7 @@ double Distance::canberra(vector<double> vec1, vector<double> vec2, int size)
 /*
 Calculates the minkowski distance between two given vectors.
 */
-double Distance::minkowski(vector<double> vec1, vector<double> vec2, int size, double p = 3)
+double Distance::minkowski(vector<double> vec1, vector<double> vec2, int size, double p)
 {
     double sum = 0;
     int i;

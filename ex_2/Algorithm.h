@@ -1,6 +1,9 @@
+#ifndef ALGORITHM_H
+#define ALGORRITHM_H
+
 #include <string>
 #include <map>
-#include "Distance.cpp"
+#include "Distance.h"
 #include "Classifiable.h"
 
 using namespace std;
@@ -19,3 +22,5 @@ public:
     vector<Classifiable> KClosest(double maxDis, vector<Classifiable> &vectors);
     string mostCommon(vector<Classifiable> vectors);
 };
+
+#endif

@@ -8,7 +8,7 @@ h-fine for the KNN class.
 #include <vector>
 #include "Classifiable.h"
 #include "Initializer.h"
-#include "Algorithm.cpp"
+#include "Algorithm.h"
 
 using namespace std;
 
