@@ -2,6 +2,7 @@
 #include "Classifiable.h"
 #include "KNN.h"
 #include <iostream>
+#include <sstream>
 
 int main(int argc, char const *argv[]) {
     Reader reader;
@@ -21,10 +22,13 @@ int main(int argc, char const *argv[]) {
         string metric = argv[3];
         KNN knnClassifier(metric, k);
         while (true) {
+            string input;
+            getline(cin, input);
+            istringstream iss(input);
+            string component;
             vector<double> v;
-            double component;
-            while (cin >> component) {
-                v.push_back(component);
+            while (iss >> component) {
+                v.push_back(stod(component));
             }
             if (v.size() != classified[0].getCoordinates().size()) {
                 cout << "Invalid vector dimension, try again!" << endl;
@@ -34,7 +38,7 @@ int main(int argc, char const *argv[]) {
             cout << label << endl;
         }
     } catch(const std::exception& e) {
-        std::cerr << e.what() << '\n';
+        std::cerr << "Invalid input, problem in: " << e.what() << '\n';
     }
     return 0;
 }
