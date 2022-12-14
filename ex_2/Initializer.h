@@ -16,19 +16,19 @@ class Initializer
 private:
     /*
     Defines which distance method will be used during the initialization.
-     */
+    */
     Distance disFunc;
 
 public:
     /*
-   Constructor function.
-   */
+    Constructor function.
+    */
     Initializer(string type);
 
     /*
-   Setter for the disFunc parameter.
-   */
-    void setDidFunc(string newDis);
+    Setter for the disFunc parameter.
+    */
+    void setDisFunc(string newDis);
 
     /*
     Initializes all the distance parameters of the vectors according to a given vector

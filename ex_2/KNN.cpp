@@ -8,7 +8,7 @@ void KNN::setKNN(string type, int K)
     this->algo.setK(K);
 
     // Sets the distance measuring type.
-    this->starter.setDistance(type);
+    this->starter.setDisFunc(type);
 }
 
 string KNN::lunchKNN(vector<Classifiable> &vectors, vector<double> v)

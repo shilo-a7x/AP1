@@ -2,7 +2,7 @@
 
 Initializer::Initializer(string type) : disFunc(type) {}
 
-void Initializer::setDidFunc(string newDis){
+void Initializer::setDisFunc(string newDis){
 
     // Sets the distance type the initializer is working with.
     this->disFunc.setType(newDis);
