@@ -8,7 +8,7 @@ Distance::Distance(string type)
         this->type = type;
     }
 
-    // Puts 'ERR' in the string
+    // Puts 'ERR' in the string.
     else
     {
         this->type = "ERR";
