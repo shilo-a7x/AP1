@@ -37,7 +37,7 @@ int main(int argc, char const *argv[]) {
             string label = knnClassifier.lunchKNN(classified, v);
             cout << label << endl;
         }
-    } catch(const std::exception& e) {
+    } catch (const std::exception& e) {
         std::cerr << "Invalid input, problem in: " << e.what() << '\n';
     }
     return 0;

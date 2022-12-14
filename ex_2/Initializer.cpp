@@ -8,7 +8,7 @@ void Initializer::setDisFunc(string newDis){
     this->disFunc.setType(newDis);
 }
 
-vector<Classifiable> Initializer::init(vector<Classifiable> vectors, vector<double> v)
+vector<Classifiable> Initializer::init(vector<Classifiable> &vectors, vector<double> v)
 {
     int i;
 

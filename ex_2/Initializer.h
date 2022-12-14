@@ -33,7 +33,7 @@ public:
     /*
     Initializes all the distance parameters of the vectors according to a given vector
     */
-    vector<Classifiable> init(vector<Classifiable> vectors, vector<double> v);
+    vector<Classifiable> init(vector<Classifiable> &vectors, vector<double> v);
 };
 
 #endif
