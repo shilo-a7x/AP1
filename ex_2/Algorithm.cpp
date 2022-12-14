@@ -89,11 +89,12 @@ string Algorithm::mostCommon(vector<Classifiable> vectors)
     string mostCommonString;
     for (i = 0; i < vectors.size(); i++)
     {
-        if (map.count(vectors[i].getLable()) == 0)
+        string current = vectors[i].getLable();
+        if (map.count(current) == 0)
         {
-            map[vectors[i].getLable()] = 0;
+            map[current] = 0;
         }
-        map[vectors[i].getLable()]++;
+        map[current]++;
     }
     for (const auto &pair : map)
     {
