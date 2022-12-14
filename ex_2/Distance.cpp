@@ -97,7 +97,7 @@ double Distance::canberra(vector<double> vec1, vector<double> vec2, int size)
     return sum;
 }
 
-double Distance::minkowski(vector<double> vec1, vector<double> vec2, int size, double p = 3)
+double Distance::minkowski(vector<double> vec1, vector<double> vec2, int size, double p)
 {
     double sum = 0;
     int i;
