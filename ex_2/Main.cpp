@@ -22,7 +22,16 @@ int main(int argc, char const *argv[]) {
         KNN knnClassifier(metric, k);
         while (true) {
             vector<double> v;
-            cin >> 
+            double component;
+            while (cin >> component) {
+                v.push_back(component);
+            }
+            if (v.size() != classified[0].getCoordinates().size()) {
+                cout << "Invalid vector dimension, try again!" << endl;
+                continue;
+            }
+            string label = knnClassifier.lunchKNN(classified, v);
+            cout << label << endl;
         }
     } catch(const std::exception& e) {
         std::cerr << e.what() << '\n';
