@@ -2,6 +2,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <stdexcept>
 
 
 vector<vector<string>> Reader::readCSV(const string &path) {
