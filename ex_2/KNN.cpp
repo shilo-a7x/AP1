@@ -16,10 +16,10 @@ string KNN::lunchKNN(vector<Classifiable> &vectors, vector<double> &v)
     // Initializes all the distances of all the vectors in 'vectors' from 'v'.
     starter.init(vectors, v);
 
-    // get k nearest neighbors to beggining of the vector
+    // get k nearest neighbors to beggining of the array
     algo.QuickSelect(vectors, 0, vectors.size() - 1, algo.getK());
 
-    // Picks the k closest vectors from 'Vectors'. in case of ties takes all the ones that their distance is <= maxDis.
+    // Picks the k closest vectors from 'Vectors'.
     vector<Classifiable> closest = algo.KClosest(vectors, algo.getK());
 
     // Return the string that is the most common among the k closest vectors.

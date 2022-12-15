@@ -4,6 +4,13 @@
 #include <iostream>
 #include <sstream>
 
+/**
+ * @brief 
+ * 
+ * @param argc expected 4 arguments 
+ * @param argv expected "a.out k filepath metric"
+ * @return int 
+ */
 int main(int argc, char const *argv[]) {
     if (argc != 4) {
         cout << "Needs 4 valid arguments for KNN!" << endl;
@@ -19,6 +26,7 @@ int main(int argc, char const *argv[]) {
         vector<vector<string>> data;
         data = reader.readCSV(argv[2]);
         vector<Classifiable> classified = Classifiable::toVector(data, true);
+        // keep k in bounds
         if (k > classified.size()) {
             k = classified.size();
         }

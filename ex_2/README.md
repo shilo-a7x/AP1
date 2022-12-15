@@ -18,9 +18,9 @@ Note that in Minkosky distance the p parameter we are using is 2, making it iden
 If needed, the p parameter in the Minkosky distance can be changed within the call to the function in the fourth parameter.<br />
 
 
-<h2>Code execution command:</h2>
-In the terminal, type the following line (while in ex_1/part_2/ dir):<br />
-<code>  g++ -std=c++11 main.cpp vecDistances.cpp -o a.out </code><br />
+<h2>Code execution:</h2>
+In the terminal, just type the following command (while in ex_2 dir):<br />
+<code> make </code><br />
 And then type:<br />
 <code> ./a.out </code><br />
 

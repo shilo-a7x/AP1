@@ -19,6 +19,7 @@ vector<vector<string>> Reader::readCSV(const string &path) {
     for (const auto &line : lines) {
         vector<string> row = split(line, ',');
         int rowLen = row.size();
+        // all rows must have same number of fields
         if (rowLen != csvWidth) {
             throw runtime_error("File is not in valid csv format");
         }
