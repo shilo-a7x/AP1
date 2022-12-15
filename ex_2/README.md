@@ -26,7 +26,7 @@ the whole proccess is running in a never-ending loop that always waits for a new
 
 
 <h2>Code execution:</h2>
-In the terminal, just type the following command (while in ex_2 dir):<br />
+In the terminal, just type the following command (while in AP1/ex_2 dir):<br />
 <code> make </code><br />
 And then type:<br />
 <code> ./a.out k file_path metric</code><br />
