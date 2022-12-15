@@ -12,13 +12,16 @@ int main(int argc, char const *argv[]) {
         return 0;
     }
     try {
-        data = reader.readCSV(argv[2]);
-        vector<Classifiable> classified = Classifiable::toVector(data, true);
         int k = atoi(argv[1]);
-        if (k <= 0) {
+        if (k <= 0 ) {
             cout << "Invalid k for KNN, must be a positive integer." << endl;
             return 0;
-        } 
+        }
+        data = reader.readCSV(argv[2]);
+        vector<Classifiable> classified = Classifiable::toVector(data, true);
+        if (k > classified.size()) {
+            k = classified.size();
+        }
         string metric = argv[3];
         KNN knnClassifier(metric, k);
         while (true) {
