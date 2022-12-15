@@ -6,16 +6,23 @@ This technique is used by machine-learning algorithm and other algorithms.<br />
 
 <h3>Implementation</h3>
 First after compiling, the user enters a command that contains 4 parameters: "a.out", "K", "file_name.csv" and a string. <br />
-In order to implement the algorithm we first constucted a 'Reader' class that reads the data from a given ".csv" file.<br />
+Then, the user enters n coordinates, when n signifies the number of parameters is each of the vectors in the DB.<br />
+Any wrong input in these two stages is handled accordingly.<br />
+In order to implement the KNN algorithm,the program uses a 'Reader' class that reads the data from a given ".csv" file.<br />
 The 'Reader' extracts the vectors and the tags from the ".csv" file and puts them in a vector of 'Classifiable's. <br />
-A 'Classifiable' is a class that contains a vector and a tag as members.<br />
-If one of the above cases is the case, the program prints an error massage and terminates itself.<br />
-On the other case when the vectors are valid, the program calculates 5 distance methods between the two vectors.<br />
-The distance functions are Euclidean, Manhattan, Chebyshev, Canberra and Minkowsky distances.<br />
-After each calculation the program prints the result. If the result is an int the function will print the number with one digit after the point.<br />
-If not, it will print the double with 16 digits after the point.<br />
-Note that in Minkosky distance the p parameter we are using is 2, making it identical to the Euclidean distance.<br />
-If needed, the p parameter in the Minkosky distance can be changed within the call to the function in the fourth parameter.<br />
+A 'Classifiable' is a class that contains a vector and a tag as members. It also has a distance member (a double).<br />
+After that, the program calls the 'KNN' class that runs the algorithm itself.<br />
+At first, 'KNN' uses an 'Initializer', that sets the distance of each 'Classifiable'.<br />
+It sets it with a 'Distance' class which id defined by the string given in the cmd.<br />
+If the string is "MAN" - uses manhattan distance.<br />
+If the string is "AUC" - uses euclidean distance.<br />
+If the string is "CHB" - uses chebyshev distance.<br />
+If the string is "CAN" - uses canberra distance.<br />
+If the string is "MIN" - uses minkowski distance.<br />
+After initializing all the vector distances, the algorithm finds the K'th closest vector by a quick-select algorithm,<br />
+and takes all the vectors that their distance from the given vector is equal or smaller then the K'th closest vector.<br />
+After getting the K closest vectors, it finds the most common tag among these vectors and returns it as the answer.<br />
+the whole proccess is running in a never-ending loop that always waits for a new vector input.<br />
 
 
 <h2>Code execution command:</h2>
