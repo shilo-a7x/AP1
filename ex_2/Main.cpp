@@ -5,8 +5,6 @@
 #include <sstream>
 
 int main(int argc, char const *argv[]) {
-    Reader reader;
-    vector<vector<string>> data;
     if (argc != 4) {
         cout << "Needs 4 valid arguments for KNN!" << endl;
         return 0;
@@ -17,6 +15,8 @@ int main(int argc, char const *argv[]) {
             cout << "Invalid k for KNN, must be a positive integer." << endl;
             return 0;
         }
+        Reader reader;
+        vector<vector<string>> data;
         data = reader.readCSV(argv[2]);
         vector<Classifiable> classified = Classifiable::toVector(data, true);
         if (k > classified.size()) {
