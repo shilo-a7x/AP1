@@ -26,6 +26,7 @@ the whole proccess is running in a never-ending loop that always waits for a new
 
 
 <h2>Code execution:</h2>
+We provided a makefile in the project dir (AP1/ex_2) <br/>
 In the terminal, just type the following command (while in AP1/ex_2 dir):<br />
 <code> make </code><br />
 And then type:<br />
