@@ -18,7 +18,7 @@ If the string is "MAN" - uses manhattan distance.<br />
 If the string is "AUC" - uses euclidean distance.<br />
 If the string is "CHB" - uses chebyshev distance.<br />
 If the string is "CAN" - uses canberra distance.<br />
-If the string is "MIN" - uses minkowski distance.<br />
+If the string is "MIN" - uses minkowski distance (default parameter p = 3).<br />
 After initializing all the vector distances, the algorithm finds the K'th closest vector by a quick-select algorithm,<br />
 and takes all the vectors that their distance from the given vector is equal or smaller then the K'th closest vector.<br />
 After getting the K closest vectors, it finds the most common tag among these vectors and returns it as the answer.<br />
@@ -29,16 +29,13 @@ the whole proccess is running in a never-ending loop that always waits for a new
 In the terminal, just type the following command (while in ex_2 dir):<br />
 <code> make </code><br />
 And then type:<br />
-<code> ./a.out </code><br />
+<code> ./a.out k file_path metric</code><br />
+while k is the number of neighbors, <br/>
+file_path is a csv file of tagged vectors, <br/>
+metric is from [MAN, AUC, CHB, CAN, MIN] <br/>
 
 <h3> example of input and output: </h3>
 input:<br />
-1 2 3 <br />
-3 2 1 <br />
+6.9 3.1 4.9 1.5 <br />
 output:<br />
-2.8284271247461903<br />
-4.0<br />
-2.0<br />
-1.0<br />
-2.8284271247461903
-
+Iris-versicolor<br />
