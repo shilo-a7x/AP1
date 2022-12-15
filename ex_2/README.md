@@ -1,5 +1,5 @@
 <h1>Ex2 - KNN</h1>
-The KNN algorithm is an algorithm that gets a DB of vectors and tags, and an untagged vector.<br />
+The KNN algorithm is an algorithm that gets a DB of vectors and tags, and an untagged vector.<br/>
 By checking the distance of the vector from the vectors and finding the K closest vectors in the DB,<br />
 the algorithm tags the untagged vector with the most common tag among the K closest vector.<br />
 This technique is used by machine-learning algorithm and other algorithms.<br />
