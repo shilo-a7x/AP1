@@ -46,13 +46,14 @@ public:
     /*
     Uses an algorithm similar to QuickSort() in order to find the K's smallest element.
     Instead of sorting both sides after the partition sorts recursively only the side where K is in.
+    ints l, r and k are indices, so init with [0, size - 1, k]
     */
     double QuickSelect(vector<Classifiable> &vectors, int l, int r, int k);
 
     /*
-    Gets a distance and returns all the vectors that their distances are <= maxDis.
+    Returns a vector of the k smallest elements
     */
-    vector<Classifiable> KClosest(double maxDis, vector<Classifiable> &vectors);
+    vector<Classifiable> KClosest(vector<Classifiable> &vectors, int k);
 
     /*
     Returns the most common string among all the Classifiables in a given Classifiable vector.

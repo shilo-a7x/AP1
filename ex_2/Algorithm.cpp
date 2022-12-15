@@ -63,19 +63,15 @@ double Algorithm::QuickSelect(vector<Classifiable> &vectors, int l, int r, int k
     return 0;
 }
 
-vector<Classifiable> Algorithm::KClosest(double maxDis, vector<Classifiable> &vectors)
+vector<Classifiable> Algorithm::KClosest(vector<Classifiable> &vectors, int k)
 {
     // Create the Kclosest vector.
     vector<Classifiable> Kclosest;
     int i;
 
-    // If the vector's distance is smaller then the given maxDis, add the vector to the Kclosest vector.
-    for (i = 0; i < vectors.size(); i++)
-    {
-        if (vectors[i].getDistance() <= maxDis)
-        {
+    // retrieve the k least elements
+    for (i = 0; i < k; i++) {
             Kclosest.push_back(vectors[i]);
-        }
     }
     return Kclosest;
 }

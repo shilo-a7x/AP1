@@ -35,7 +35,7 @@ public:
     /*
     Uses KNN's members in order to return the most common string in the K closets vectors.
     */
-    string lunchKNN(vector<Classifiable> &vectors, vector<double> v);
+    string lunchKNN(vector<Classifiable> &vectors, vector<double> &v);
 };
 
 #endif
