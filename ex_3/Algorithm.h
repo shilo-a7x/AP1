@@ -5,15 +5,14 @@ header for the Algorithm class.
 #ifndef ALGORITHM_H
 #define ALGORITHM_H
 
-#include <string>
-#include <map>
-#include "Distance.h"
 #include "Classifiable.h"
+#include "Distance.h"
+#include <map>
+#include <string>
 
 using namespace std;
 
-class Algorithm
-{
+class Algorithm {
 private:
     /*
     Defines how many vectors we need to take for the string picking.

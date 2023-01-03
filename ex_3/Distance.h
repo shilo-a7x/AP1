@@ -6,13 +6,12 @@ header for the Distance class.
 #define DISTANCE_H
 
 #include <cmath>
-#include <vector>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-class Distance
-{
+class Distance {
 private:
     /*
     A string which defines which distance method to use.

@@ -5,14 +5,13 @@ header for the Initializer class.
 #ifndef INITIALIZER_H
 #define INITIALIZER_H
 
-#include <vector>
-#include "Distance.h"
 #include "Classifiable.h"
+#include "Distance.h"
+#include <vector>
 
 using namespace std;
 
-class Initializer
-{
+class Initializer {
 private:
     /*
     Defines which distance method will be used during the initialization.

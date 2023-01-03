@@ -1,33 +1,27 @@
 #include "Algorithm.h"
 
-Algorithm::Algorithm(int K)
-{
+Algorithm::Algorithm(int K) {
     this->K = K;
 }
 
-int Algorithm::getK()
-{
+int Algorithm::getK() {
     return this->K;
 }
 
-void Algorithm::setK(int newK)
-{
+void Algorithm::setK(int newK) {
     this->K = newK;
 }
 
-int Algorithm::partition(vector<Classifiable> &vectors, int l, int r)
-{
+int Algorithm::partition(vector<Classifiable> &vectors, int l, int r) {
     // Select a pivot.
     double x = vectors[r].getDistance();
     int i = l, j;
 
     // Put all the vectors that are smaller then the pivot to it's left and the rest to it's right.
-    for (j = l; j <= r - 1; j++)
-    {
+    for (j = l; j <= r - 1; j++) {
 
         // If the vector's distance is smaller then the pivot's then move it to where will be the pivot's left.
-        if (vectors[j].getDistance() <= x)
-        {
+        if (vectors[j].getDistance() <= x) {
             swap(vectors[i], vectors[j]);
             i++;
         }
@@ -38,11 +32,9 @@ int Algorithm::partition(vector<Classifiable> &vectors, int l, int r)
     return i;
 }
 
-double Algorithm::QuickSelect(vector<Classifiable> &vectors, int l, int r, int k)
-{
+double Algorithm::QuickSelect(vector<Classifiable> &vectors, int l, int r, int k) {
     // If k is smaller than number of elements in array.
-    if (k > 0 && k <= r - l + 1)
-    {
+    if (k > 0 && k <= r - l + 1) {
 
         // Partition the array around last element and get the position of the pivot element in the sorted array.
         int index = partition(vectors, l, r);
@@ -63,43 +55,36 @@ double Algorithm::QuickSelect(vector<Classifiable> &vectors, int l, int r, int k
     return 0;
 }
 
-vector<Classifiable> Algorithm::KClosest(vector<Classifiable> &vectors, int k)
-{
+vector<Classifiable> Algorithm::KClosest(vector<Classifiable> &vectors, int k) {
     // Create the Kclosest vector.
     vector<Classifiable> Kclosest;
     int i;
 
     // If the vector's distance is smaller then the given maxDis, add the vector to the Kclosest vector.
-    for (i = 0; i <= k; i++)
-    {
+    for (i = 0; i <= k; i++) {
         Kclosest.push_back(vectors[i]);
     }
     return Kclosest;
 }
 
-string Algorithm::mostCommon(vector<Classifiable> vectors)
-{
+string Algorithm::mostCommon(vector<Classifiable> vectors) {
     // Map every string to the number of time is occuers.
     map<string, int> map;
     int i, max = 0;
     string mostCommonString;
 
     // Check for every vector if it's string is in the map. if so then ++ it, if not add it to the map.
-    for (i = 0; i < vectors.size(); i++)
-    {
+    for (i = 0; i < vectors.size(); i++) {
         string current = vectors[i].getLable();
-        if (map.count(current) == 0)
-        {
+        if (map.count(current) == 0) {
             map[current] = 0;
         }
         map[current]++;
     }
 
     // Get the most coomon value from the map.
-    for (const auto &pair : map)
-    {
-        if (max < pair.second)
-        {
+    for (const auto &pair : map) {
+        if (max < pair.second) {
             max = pair.second;
             mostCommonString = pair.first;
         }

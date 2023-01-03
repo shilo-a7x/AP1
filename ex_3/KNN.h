@@ -5,15 +5,14 @@ header for the KNN class.
 #ifndef KNN_H
 #define KNN_H
 
-#include <vector>
+#include "Algorithm.h"
 #include "Classifiable.h"
 #include "Initializer.h"
-#include "Algorithm.h"
+#include <vector>
 
 using namespace std;
 
-class KNN
-{
+class KNN {
 private:
     /*
     Two classes that holds the functions that lunchKNN uses.

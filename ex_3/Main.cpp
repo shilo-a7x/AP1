@@ -1,15 +1,15 @@
-#include "Reader.h"
 #include "Classifiable.h"
 #include "KNN.h"
+#include "Reader.h"
 #include <iostream>
 #include <sstream>
 
 /**
- * @brief 
- * 
- * @param argc expected 4 arguments 
+ * @brief
+ *
+ * @param argc expected 4 arguments
  * @param argv expected "a.out k filepath metric"
- * @return int 
+ * @return int
  */
 int main(int argc, char const *argv[]) {
     if (argc != 4) {
@@ -18,7 +18,7 @@ int main(int argc, char const *argv[]) {
     }
     try {
         int k = atoi(argv[1]);
-        if (k <= 0 ) {
+        if (k <= 0) {
             cout << "Invalid k for KNN, must be a positive integer." << endl;
             return 0;
         }
@@ -48,7 +48,7 @@ int main(int argc, char const *argv[]) {
             string label = knnClassifier.lunchKNN(classified, v);
             cout << label << endl;
         }
-    } catch (const std::exception& e) {
+    } catch (const std::exception &e) {
         std::cerr << "Invalid input, problem in: " << e.what() << '\n';
     }
     return 0;

@@ -1,9 +1,8 @@
 #include "Reader.h"
 #include <fstream>
-#include <sstream>
 #include <iostream>
+#include <sstream>
 #include <stdexcept>
-
 
 vector<vector<string>> Reader::readCSV(const string &path) {
     ifstream inputFile(path);
