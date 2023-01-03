@@ -26,6 +26,8 @@ public:
      *
      * @param path file path
      * @return vector<vector<string>>
+     * @throws std::runtime_error if not in csv format;
+     * ios_base::failure if file not found
      */
     vector<vector<string>> readCSV(const string &path);
 };
