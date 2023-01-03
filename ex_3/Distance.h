@@ -55,13 +55,19 @@ public:
     string getType();
 
     /*
-   Setter for the type parameter.
-   */
+    Setter for the type parameter.
+    */
     void setType(string newType);
 
-    /*
-    Determines which distance function to apply once called.
-    */
+    /**
+     * @brief calculates distance between 2 vectors according to
+     * the metric type 
+     * 
+     * @param vec1 n dimension vector
+     * @param vec2 n dimension vector
+     * @return double
+     * @throws runtime_error if dimensions don't agree
+     */
     double dis(vector<double> vec1, vector<double> vec2);
 };
 

@@ -1,4 +1,5 @@
 #include "Distance.h"
+#include <stdexcept>
 
 Distance::Distance(string type) {
     // Makes sure that the distance type we are using is legit.
@@ -21,6 +22,9 @@ void Distance::setType(string newType) {
 }
 
 double Distance::dis(vector<double> vec1, vector<double> vec2) {
+    if (vec1.size() != vec2.size()) {
+        throw runtime_error("Vector dimensions must agree");
+    }
     if (!this->type.compare("MAN")) {
         return this->manhattan(vec1, vec2, vec1.size());
     }
