@@ -11,7 +11,8 @@ header for the Initializer class.
 
 using namespace std;
 
-class Initializer {
+class Initializer
+{
 private:
     /*
     Defines which distance method will be used during the initialization.
@@ -28,6 +29,11 @@ public:
     Setter for the disFunc parameter.
     */
     void setDisFunc(string newDis);
+
+    /*
+    Gets the disFunc's type.
+    */
+    string getDisfuncType();
 
     /*
     Initializes all the distance parameters of the vectors according to a given vector

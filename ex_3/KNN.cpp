@@ -2,7 +2,8 @@
 
 KNN::KNN(string type, int K) : starter(type), algo(K) {}
 
-void KNN::setKNN(string type, int K) {
+void KNN::setKNN(string type, int K)
+{
     // Sets the K value.
     this->algo.setK(K);
 
@@ -10,7 +11,8 @@ void KNN::setKNN(string type, int K) {
     this->starter.setDisFunc(type);
 }
 
-string KNN::lunchKNN(vector<Classifiable> &vectors, vector<double> &v) {
+string KNN::lunchKNN(vector<Classifiable> &vectors, vector<double> &v)
+{
     // Initializes all the distances of all the vectors in 'vectors' from 'v'.
     starter.init(vectors, v);
 
@@ -22,4 +24,13 @@ string KNN::lunchKNN(vector<Classifiable> &vectors, vector<double> &v) {
 
     // Return the string that is the most common among the k closest vectors.
     return algo.mostCommon(closest);
+}
+
+int KNN::isDisError()
+{
+    if (starter.getDisfuncType().compare("ERR"))
+    {
+        return 1;
+    }
+    return 0;
 }

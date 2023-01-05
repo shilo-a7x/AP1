@@ -12,7 +12,8 @@ header for the KNN class.
 
 using namespace std;
 
-class KNN {
+class KNN
+{
 private:
     /*
     Two classes that holds the functions that lunchKNN uses.
@@ -35,6 +36,11 @@ public:
     Uses KNN's members in order to return the most common string in the K closets vectors.
     */
     string lunchKNN(vector<Classifiable> &vectors, vector<double> &v);
+
+    /*
+    Checks if there is an error with the Distance member of the initializer.
+    */
+    int isDisError();
 };
 
 #endif
