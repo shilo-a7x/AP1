@@ -40,8 +40,8 @@ string TCPServer::recv() {
         }
     }
     //Receive a message and save it in the buffer
-    char buffer[Socket::buffer_size];
-    int expected_data_len = Socket::buffer_size;
+    char buffer[BUFFER_SIZE];
+    int expected_data_len = BUFFER_SIZE;
     int read_bytes = ::recv(this->clientSock, buffer, expected_data_len, 0);
     if (read_bytes < 0) {
         perror("error writing to sock");
