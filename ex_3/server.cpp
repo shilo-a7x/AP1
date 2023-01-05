@@ -1,8 +1,8 @@
-#include <iostream>
-#include "TCPserver.h"
-#include "KNN.h"
 #include "Classifiable.h"
+#include "KNN.h"
 #include "Reader.h"
+#include "TCPserver.h"
+#include <iostream>
 
 using namespace std;
 
@@ -28,8 +28,7 @@ int main(int argc, char *argv[])
         vector<Classifiable> classified = Classifiable::toVector(data, true);
         int port = atoi(argv[2]);
         server = new TCPServer(INADDR_ANY, htons(port));
-        if (server->error)
-        {
+        if (server->error) {
             throw runtime_error("failed to initialize socket\n");
         }
     }
@@ -42,8 +41,7 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    while (true)
-    {
+    while (true) {
         // Receive the message from the socket.
         string msg = server->recv(), k, DIS, coordinate;
         vector<string> stringVec;
@@ -51,11 +49,9 @@ int main(int argc, char *argv[])
         double num;
         int K;
         istringstream ss(msg);
-        whlie(true)
-        {
+        whlie(true) {
             ss >> coordinate;
-            if (is_number(coordinate))
-            {
+            if (is_number(coordinate)) {
                 // tures a string to a double.
                 num = strtod(coordinate.c_str(), 0);
 
@@ -68,12 +64,10 @@ int main(int argc, char *argv[])
         }
         ss >> k;
         K = atoi(k);
-        if (k > classified.size())
-        {
+        if (k > classified.size()) {
             k = classified.size();
         }
-        if (v.size() != classified[0].getCoordinates().size())
-        {
+        if (v.size() != classified[0].getCoordinates().size()) {
             server->send("invalid input");
             continue;
         }
