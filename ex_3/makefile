@@ -15,12 +15,12 @@ CC	 = g++
 FLAGS	 = -g -c
 LFLAGS	 = 
 
-all: server.out client.out
+all: server client
 
-server.out:
+server:
 	$(CC) -g $(OBJS0) -o $(OUT0) $(LFLAGS)
 
-client.out:
+client:
 	$(CC) -g $(OBJS1) -o $(OUT1) $(LFLAGS)
 
 Algorithm.o: Algorithm.cpp
