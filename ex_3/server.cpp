@@ -17,14 +17,13 @@ int main(int argc, char *argv[])
         cout << "Needs 3 valid arguments to run the server!" << endl;
         return 0;
     }
+    Reader reader;
+    vector<vector<string>> data;
 
     // if there's an exeption while initializing the server don't crash, just send an error massage and quit.
     try
     {
-        Reader reader;
-        vector<vector<string>> data;
-
-        //use the reader in order
+        // use the reader in order
         data = reader.readCSV(argv[1]);
         vector<Classifiable> classified = Classifiable::toVector(data, true);
         int port = atoi(argv[2]);
@@ -38,7 +37,8 @@ int main(int argc, char *argv[])
     // if there was a problem send an error massage and quit.
     catch (const exception &e)
     {
-        cout << "unable to start the server\n" << endl;
+        cout << "unable to start the server\n"
+             << endl;
         return 0;
     }
 

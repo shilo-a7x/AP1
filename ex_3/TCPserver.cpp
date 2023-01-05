@@ -31,12 +31,12 @@ string TCPServer::recv() {
     if (this->clientSock == 0) {
         //Listen and accept the client
         if (listen(sockId, this->queueLen) < 0) {
-            perror("error listening to a socket");
+            error = 1;
         }
         unsigned int addr_len = sizeof(this->from);
         this->clientSock = accept(sockId, (struct sockaddr *) &from, &addr_len);
         if (this->clientSock < 0) {
-            perror("error accepting client");
+            error = 1;
         }
     }
     //Receive a message and save it in the buffer
