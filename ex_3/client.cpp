@@ -12,15 +12,10 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    vector<vector<string>> data;
     try {
-        data = reader.readCSV(argv[1]);
-        vector<Classifiable> classified = Classifiable::toVector(data, true);
+        const char* ip = argv[1];
         int port = atoi(argv[2]);
-        server = new TCPServer(INADDR_ANY, htons(port));
-        if (server->error) {
-            throw runtime_error("failed to initialize socket\n");
-        }
+        TCPClient client(ip,port);
     } catch (const exception &e) {
         cout << "unable to start the server\n"
              << endl;
