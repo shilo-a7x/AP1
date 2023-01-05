@@ -1,13 +1,27 @@
-OBJS	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o .o Reader.o
-SOURCE	= Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Main.cpp Reader.cpp
-HEADER	= Algorithm.h Classifiable.h Distance.h Initializer.h KNN.h Reader.h
-OUT	= a.out
+OBJS	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o TCPClient.o client.o
+OUT	= server.out client.out
+
+OBJS0	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o
+SOURCE0	= Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Reader.cpp TCPServer.cpp server.cpp
+HEADER0	= Algorithm.h Classifiable.h Distance.h Initializer.h KNN.h Reader.h TCPServer.h
+OUT0 = server.out
+
+OBJS1	= TCPClient.o client.o
+SOURCE1	= TCPClient.cpp client.cpp
+HEADER1 = TCPClient.h
+OUT1 = client.out
+
 CC	 = g++
 FLAGS	 = -g -c
 LFLAGS	 = 
 
 all: server.out client.out
-	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
+
+server.out:
+	$(CC) -g $(OBJS0) -o $(OUT0) $(LFLAGS)
+
+client.out:
+	$(CC) -g $(OBJS1) -o $(OUT1) $(LFLAGS)
 
 Algorithm.o: Algorithm.cpp
 	$(CC) $(FLAGS) Algorithm.cpp -std=c++11
@@ -27,9 +41,8 @@ KNN.o: KNN.cpp
 Reader.o: Reader.cpp
 	$(CC) $(FLAGS) Reader.cpp -std=c++11
 
+TCPClient.o: TCPClient.cpp
+	$(CC) $(FLAGS) TCPClient.cpp -std=c++11
 
 clean:
 	rm -f $(OBJS) $(OUT)
-
-run: $(OUT)
-	./$(OUT)
