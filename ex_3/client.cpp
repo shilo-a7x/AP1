@@ -15,14 +15,14 @@ int main(int argc, char *argv[]) {
     try {
         const char* ip = argv[1];
         int port = atoi(argv[2]);
-        TCPClient client(ip,port);
+        TCPClient client(inet_addr(ip), htons(port));
     } catch (const exception &e) {
         cout << "unable to start the server\n"
              << endl;
         return 0;
     }
 
-    while (true) {
+   /*  while (true) {
         // Receive the message from the socket.
         string msg = server->recv(), k, DIS, coordinate;
         vector<string> stringVec;
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
         double num;
         int K;
         istringstream ss(msg);
-        whlie(true) {
+        while(true) {
             ss >> coordinate;
             if (is_number(coordinate)) {
                 // tures a string to a double.
@@ -56,6 +56,6 @@ int main(int argc, char *argv[]) {
 
         // Send the types back
         server->send(label);
-    }
+    } */
     return 0;
 }
