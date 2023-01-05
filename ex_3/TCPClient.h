@@ -3,6 +3,10 @@
 
 #include <netinet/in.h>
 #include <string>
+#include <unistd.h>
+#include <stdexcept>
+#include <cstring>
+#include <vector>
 
 using namespace std;
 
