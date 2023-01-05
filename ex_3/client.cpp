@@ -1,47 +1,66 @@
+#include "TCPClient.h"
 #include <iostream>
-#include <sstream>
-#include <vector>
 
 using namespace std;
 
-/**
- * @brief
- *
- * @param argc expected 3 arguments
- * @param argv expected "client.out ip port"
- * @return int
- */
-int main(int argc, char const *argv[]) {
+/*
+The main function for lunching the server.
+*/
+int main(int argc, char *argv[]) {
     if (argc != 3) {
-        cout << "Needs 3 valid arguments to run client" << endl;
+        cout << "Needs 3 valid arguments to run the server!" << endl;
         return 0;
     }
+
+    vector<vector<string>> data;
     try {
-        int k = atoi(argv[1]);
-        if (k <= 0) {
-            cout << "Invalid k for KNN, must be a positive integer." << endl;
-            return 0;
+        data = reader.readCSV(argv[1]);
+        vector<Classifiable> classified = Classifiable::toVector(data, true);
+        int port = atoi(argv[2]);
+        server = new TCPServer(INADDR_ANY, htons(port));
+        if (server->error) {
+            throw runtime_error("failed to initialize socket\n");
         }
-        string metric = argv[3];
-        KNN knnClassifier(metric, k);
-        while (true) {
-            string input;
-            getline(cin, input);
-            istringstream iss(input);
-            string component;
-            vector<double> v;
-            while (iss >> component) {
-                v.push_back(stod(component));
-            }
-            if (v.size() != classified[0].getCoordinates().size()) {
-                cout << "Invalid vector dimension, try again!" << endl;
+    } catch (const exception &e) {
+        cout << "unable to start the server\n"
+             << endl;
+        return 0;
+    }
+
+    while (true) {
+        // Receive the message from the socket.
+        string msg = server->recv(), k, DIS, coordinate;
+        vector<string> stringVec;
+        vector<double> vec;
+        double num;
+        int K;
+        istringstream ss(msg);
+        whlie(true) {
+            ss >> coordinate;
+            if (is_number(coordinate)) {
+                // tures a string to a double.
+                num = strtod(token.c_str(), 0);
+
+                // add the number to the vector.
+                vec.push_back(num);
                 continue;
             }
-            string label = knnClassifier.lunchKNN(classified, v);
-            cout << label << endl;
+            DIS = coordinate;
         }
-    } catch (const std::exception &e) {
-        std::cerr << "Invalid input, problem in: " << e.what() << '\n';
+        ss >> k;
+        K = atoi(k);
+        if (k > classified.size()) {
+            k = classified.size();
+        }
+        if (v.size() != classified[0].getCoordinates().size()) {
+            server->send("invalid input");
+            continue;
+        }
+        KNN knnClassifier(DIS, K);
+        string label = knnClassifier.lunchKNN(classified, vec);
+
+        // Send the types back
+        server->send(label);
     }
     return 0;
 }
