@@ -1,5 +1,6 @@
 #include "TCPClient.h"
 #include <iostream>
+#include <sstream>
 #include <arpa/inet.h>
 
 using namespace std;
@@ -16,6 +17,16 @@ int main(int argc, char *argv[]) {
         const char* ip = argv[1];
         int port = atoi(argv[2]);
         TCPClient client(inet_addr(ip), htons(port));
+        while (true) {
+            string input;
+            getline(cin, input);
+            istringstream iss(input);
+            string component;
+            vector<double> v;
+            while (iss >> component) {
+                v.push_back(stod(component));
+            }
+        }
     } catch (const exception &e) {
         cout << "unable to start the server\n" << endl;
         return 0;
