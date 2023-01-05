@@ -6,13 +6,18 @@
 
 using namespace std;
 
+/*
+The main function for lunching the server.
+*/
 int main(int argc, char *argv[])
 {
+    //
     if (argc != 3)
     {
         cout << "Needs 3 valid arguments to run the server!" << endl;
         return 0;
     }
+    
     Reader reader;
     vector<vector<string>> data;
     try

@@ -56,3 +56,7 @@ void TCPServer::close() {
     ::close(this->sockId);
 
 }
+
+int TCPServer::getError (){
+        return error;
+    }

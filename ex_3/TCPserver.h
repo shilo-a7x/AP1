@@ -21,7 +21,5 @@ public:
 
     void close();
 
-    int getError (){
-        return error;
-    }
+    int getError ();
 };
