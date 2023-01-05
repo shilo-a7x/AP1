@@ -12,14 +12,12 @@ int main(int argc, char *argv[]) {
         cout << "Needs 3 valid arguments to run the server!" << endl;
         return 0;
     }
-
     try {
         const char* ip = argv[1];
         int port = atoi(argv[2]);
         TCPClient client(inet_addr(ip), htons(port));
     } catch (const exception &e) {
-        cout << "unable to start the server\n"
-             << endl;
+        cout << "unable to start the server\n" << endl;
         return 0;
     }
 
