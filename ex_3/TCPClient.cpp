@@ -1,7 +1,4 @@
 #include "TCPClient.h"
-#include <unistd.h>
-#include <stdexcept>
-#include <cstring>
 
 void TCPClient::TCPClient(in_addr_t ip, in_port_t port) {
     sock = socket(AF_INET, SOCK_STREAM, 0);
