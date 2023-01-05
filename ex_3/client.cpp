@@ -5,6 +5,9 @@
 
 using namespace std;
 
+// declaration.
+bool is_number(const string &s);
+
 /*
 The main function for lunching the server.
 */
@@ -20,52 +23,44 @@ int main(int argc, char *argv[]) {
         while (true) {
             string input;
             getline(cin, input);
-            istringstream iss(input);
-            string component;
-            vector<double> v;
-            while (iss >> component) {
-                v.push_back(stod(component));
+            if (!input.compare("-1")) {
+                client.close();
+                return 0;
             }
+            istringstream iss(input);
+            string msg;
+            string token;
+            while (iss >> token) {
+                if (is_number(token)) {
+                    msg += token;
+                } else {
+                    msg += token;
+                    break;
+                }                
+            }
+            iss >> token;
+            if (is int) { ///////
+                msg+= token
+            } else {
+                invalid 
+                continue;
+            } 
+
         }
     } catch (const exception &e) {
-        cout << "unable to start the server\n" << endl;
+        cout << "Unable to connect the server!\n" << endl;
         return 0;
     }
-
-   /*  while (true) {
-        // Receive the message from the socket.
-        string msg = server->recv(), k, DIS, coordinate;
-        vector<string> stringVec;
-        vector<double> vec;
-        double num;
-        int K;
-        istringstream ss(msg);
-        while(true) {
-            ss >> coordinate;
-            if (is_number(coordinate)) {
-                // tures a string to a double.
-                num = strtod(token.c_str(), 0);
-
-                // add the number to the vector.
-                vec.push_back(num);
-                continue;
-            }
-            DIS = coordinate;
-        }
-        ss >> k;
-        K = atoi(k);
-        if (k > classified.size()) {
-            k = classified.size();
-        }
-        if (v.size() != classified[0].getCoordinates().size()) {
-            server->send("invalid input");
-            continue;
-        }
-        KNN knnClassifier(DIS, K);
-        string label = knnClassifier.lunchKNN(classified, vec);
-
-        // Send the types back
-        server->send(label);
-    } */
     return 0;
+}
+
+/*
+return true if the string given represents a double and false otherwise.
+*/
+bool is_number(const string &s)
+{
+    long double ld;
+
+    // return true if the string given to the buffer is a long double and false if not.
+    return ((istringstream(s) >> ld >> ws).eof());
 }
