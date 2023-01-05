@@ -17,10 +17,10 @@ LFLAGS	 =
 
 all: server client
 
-server:
+server: $(OBJS0) $(LFLAGS)
 	$(CC) -g $(OBJS0) -o $(OUT0) $(LFLAGS)
 
-client:
+client: $(OBJS1) $(LFLAGS)
 	$(CC) -g $(OBJS1) -o $(OUT1) $(LFLAGS)
 
 Algorithm.o: Algorithm.cpp
@@ -41,17 +41,17 @@ KNN.o: KNN.cpp
 Reader.o: Reader.cpp
 	$(CC) $(FLAGS) Reader.cpp -std=c++11
 
-TCPClient.o: TCPClient.cpp
-	$(CC) $(FLAGS) TCPClient.cpp -std=c++11
-
 TCPServer.o: TCPServer.cpp
 	$(CC) $(FLAGS) TCPServer.cpp -std=c++11
 
-client.o: client.cpp
-	$(CC) $(FLAGS) client.cpp -std=c++11
-
 server.o: server.cpp
 	$(CC) $(FLAGS) server.cpp -std=c++11
+
+TCPClient.o: TCPClient.cpp
+	$(CC) $(FLAGS) TCPClient.cpp -std=c++11
+
+client.o: client.cpp
+	$(CC) $(FLAGS) client.cpp -std=c++11
 
 clean:
 	rm -f $(OBJS) $(OUT)
