@@ -1,4 +1,4 @@
-OBJS	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Main.o Reader.o
+OBJS	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o .o Reader.o
 SOURCE	= Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Main.cpp Reader.cpp
 HEADER	= Algorithm.h Classifiable.h Distance.h Initializer.h KNN.h Reader.h
 OUT	= a.out
@@ -6,7 +6,7 @@ CC	 = g++
 FLAGS	 = -g -c
 LFLAGS	 = 
 
-all: $(OBJS)
+all: server.out client.out
 	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
 
 Algorithm.o: Algorithm.cpp
@@ -23,9 +23,6 @@ Initializer.o: Initializer.cpp
 
 KNN.o: KNN.cpp
 	$(CC) $(FLAGS) KNN.cpp -std=c++11
-
-Main.o: Main.cpp
-	$(CC) $(FLAGS) Main.cpp -std=c++11
 
 Reader.o: Reader.cpp
 	$(CC) $(FLAGS) Reader.cpp -std=c++11
