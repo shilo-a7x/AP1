@@ -1,19 +1,18 @@
-#include "Classifiable.h"
-#include "KNN.h"
-#include "Reader.h"
 #include <iostream>
 #include <sstream>
+
+using namespace std;
 
 /**
  * @brief
  *
- * @param argc expected 4 arguments
- * @param argv expected "a.out k filepath metric"
+ * @param argc expected 3 arguments
+ * @param argv expected "client.out ip port"
  * @return int
  */
 int main(int argc, char const *argv[]) {
-    if (argc != 4) {
-        cout << "Needs 4 valid arguments for KNN!" << endl;
+    if (argc != 3) {
+        cout << "Needs 3 valid arguments to run client" << endl;
         return 0;
     }
     try {
@@ -21,14 +20,6 @@ int main(int argc, char const *argv[]) {
         if (k <= 0) {
             cout << "Invalid k for KNN, must be a positive integer." << endl;
             return 0;
-        }
-        Reader reader;
-        vector<vector<string>> data;
-        data = reader.readCSV(argv[2]);
-        vector<Classifiable> classified = Classifiable::toVector(data, true);
-        // keep k in bounds
-        if (k > classified.size()) {
-            k = classified.size();
         }
         string metric = argv[3];
         KNN knnClassifier(metric, k);
