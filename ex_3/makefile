@@ -44,5 +44,14 @@ Reader.o: Reader.cpp
 TCPClient.o: TCPClient.cpp
 	$(CC) $(FLAGS) TCPClient.cpp -std=c++11
 
+TCPServer.o: TCPServer.cpp
+	$(CC) $(FLAGS) TCPServer.cpp -std=c++11
+
+client.o: client.cpp
+	$(CC) $(FLAGS) client.cpp -std=c++11
+
+server.o: server.cpp
+	$(CC) $(FLAGS) server.cpp -std=c++11
+
 clean:
 	rm -f $(OBJS) $(OUT)
