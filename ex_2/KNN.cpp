@@ -25,3 +25,12 @@ string KNN::lunchKNN(vector<Classifiable> &vectors, vector<double> &v)
     // Return the string that is the most common among the k closest vectors.
     return algo.mostCommon(closest);
 }
+
+int KNN::merticError()
+{
+    if (starter.GetDisType().compare("ERR"))
+    {
+        return 1;
+    }
+    return 0;
+}

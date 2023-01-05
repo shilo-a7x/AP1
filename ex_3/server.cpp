@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
                 continue;
             }
             KNN knnClassifier(DIS, K);
+            if ()
             string label = knnClassifier.lunchKNN(classified, vec);
 
             // Send the types back

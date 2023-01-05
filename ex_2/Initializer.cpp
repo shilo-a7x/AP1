@@ -2,8 +2,8 @@
 
 Initializer::Initializer(string type) : disFunc(type) {}
 
-void Initializer::setDisFunc(string newDis){
-
+void Initializer::setDisFunc(string newDis)
+{
     // Sets the distance type the initializer is working with.
     this->disFunc.setType(newDis);
 }
@@ -18,4 +18,9 @@ vector<Classifiable> Initializer::init(vector<Classifiable> &vectors, vector<dou
         vectors[i].setDistance(disFunc.dis(v, vectors[i].getCoordinates()));
     }
     return vectors;
+}
+
+string Initializer::GetDisType()
+{
+    return disFunc.getType();
 }

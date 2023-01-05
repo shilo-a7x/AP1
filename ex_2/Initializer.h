@@ -31,6 +31,11 @@ public:
     void setDisFunc(string newDis);
 
     /*
+    Getter for the type of the disFunc parameter.
+    */
+    string GetDisType();
+
+    /*
     Initializes all the distance parameters of the vectors according to a given vector
     */
     vector<Classifiable> init(vector<Classifiable> &vectors, vector<double> v);
