@@ -21,7 +21,7 @@ to activate the client:<br />
 
 <h3> examples of input and output: </h3>
 input (in user):<br />
-6.9 3.1 4.9 1.5 MAN 20 <br />
+6.9 3.1 4.9 1.5 MAN 3 <br />
 output (also in user):<br />
 Iris-versicolor<br />
 
