@@ -41,12 +41,12 @@ int main(int argc, char *argv[]) {
             while (iss >> token) {
                 if (is_number(token)) {
                     msg += token;
-                    msg.append(' ');
+                    msg.append(" ");
                     isValid = true;
                 } else {
                     // first non-number string
                     msg += token;
-                    msg.append(' ');
+                    msg.append(" ");
                     break;
                 }                
             }

@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
         {
             // Receive the message from the socket.
             string msg = server.recv(), k, DIS, coordinate;
+            cout << msg<<endl;
 
             // make sure there was no problem with reciving the message from the client.
             if (server.getError())
