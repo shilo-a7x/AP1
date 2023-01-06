@@ -1,5 +1,6 @@
 #include "TCPserver.h"
 
+
 TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK_STREAM, 0)), from()
 {
 
@@ -35,7 +36,7 @@ void TCPServer::send(std::string string)
 }
 
 string TCPServer::recv()
-{
+{ 
 
     // check if a client is connected.
     if (this->clientSock == 0)

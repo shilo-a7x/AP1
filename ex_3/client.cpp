@@ -53,6 +53,7 @@ int main(int argc, char *argv[]) {
             isValid = false;
             if (iss >> token && is_number(token)) {
                 msg += token;
+                msg.append("\n");
                 isValid = true;
             }
             if (!isValid) { 
