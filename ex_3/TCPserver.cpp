@@ -64,7 +64,7 @@ string TCPServer::recv()
     }
 
     // create a string and return it.
-    std::string res(buffer);
+    std::string res(buffer, strlen(buffer));
     return res;
 }
 

@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
                 return 0;
             }
             istringstream iss(input);
-            string msg;
+            string msg = "";
             string token;
             // expected input: vector<double>  string_metric int_k
             bool isValid = false;
