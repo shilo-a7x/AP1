@@ -9,20 +9,26 @@ using namespace std;
 bool is_number(const string &s);
 
 /*
-The main function for lunching the server.
+The main function for lunching the client.
 */
 int main(int argc, char *argv[]) {
     if (argc != 3) {
-        cout << "Needs 3 valid arguments to run the server!" << endl;
+        cout << "Needs 3 valid arguments to run the client!" << endl;
         return 0;
     }
     try {
         const char* ip = argv[1];
         int port = atoi(argv[2]);
         TCPClient client(inet_addr(ip), htons(port));
+        // receive input from user infinitely
         while (true) {
             string input;
             getline(cin, input);
+            if (input.empty()) {
+                cout << "invalid input" << endl;
+                continue;
+            }
+            // if user enters '-1': close socket and exit
             if (!input.compare("-1")) {
                 client.close();
                 return 0;
@@ -30,25 +36,32 @@ int main(int argc, char *argv[]) {
             istringstream iss(input);
             string msg;
             string token;
+            // expected input: vector<double>  string_metric int_k
+            bool isValid = false;
             while (iss >> token) {
                 if (is_number(token)) {
                     msg += token;
+                    isValid = true;
                 } else {
+                    // first non-number string
                     msg += token;
                     break;
                 }                
             }
-            iss >> token;
-            if (is int) { ///////
-                msg+= token
-            } else {
-                invalid 
+            isValid = false;
+            if (iss >> token && is_number(token)) {
+                msg += token;
+                isValid = true;
+            }
+            if (!isValid) { 
+                cout << "invalid input" << endl;
                 continue;
-            } 
-
+            }
+            client.send(msg);
+            cout << client.recv() << endl;
         }
     } catch (const exception &e) {
-        cout << "Unable to connect the server!\n" << endl;
+        cout << "Unable to run the client!\n" << e.what() << endl;
         return 0;
     }
     return 0;

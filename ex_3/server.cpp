@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
             // make sure there was no problem with reciving the message from the client.
             if (server.getError())
             {
-                throw runtime_error("failed to recive\n");
+                throw runtime_error("failed to receive\n");
             }
 
             vector<double> vec;
@@ -124,8 +124,7 @@ int main(int argc, char *argv[])
     // if there was a problem send an error massage and quit.
     catch (const exception &e)
     {
-        cout << "unable to start the server\n"
-             << endl;
+        cout << "unable to run the server\n" << e.what() << endl;
         return 0;
     }
     return 0;
