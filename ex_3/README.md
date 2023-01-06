@@ -13,10 +13,10 @@ In the terminal, just type the following command (while in AP1/ex_3 dir):<br />
 after that you'll get to executable files, for the server and the client.<br />
 
 to activate the server:<br />
-<code> server.out <file name> <port number> </code><br />
+<code> server.out -file name- -port number- </code><br />
 
 to activate the client:<br />
-<code> client.out <ip number> <port number> </code><br />
+<code> client.out -ip number- -port number- </code><br />
 
 
 <h3> examples of input and output: </h3>
