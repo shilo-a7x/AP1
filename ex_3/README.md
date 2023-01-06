@@ -1,4 +1,7 @@
-<h1>Ex2 - KNN</h1>
+<h1>Ex3 - server & client</h1>
+We now want to create a server that uses the KNN algorithm we built in order to classify vectors for clients.<br /> 
+
+
 The KNN algorithm is an algorithm that gets a DB of vectors and tags, and an untagged vector.<br />
 By checking the distance of the vector from the vectors and finding the K closest vectors in the DB,<br />
 the algorithm tags the untagged vector with the most common tag among the K closest vector.<br />

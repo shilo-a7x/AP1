@@ -34,21 +34,32 @@ int main(int argc, char *argv[])
         int port = atoi(argv[2]);
         TCPServer server(INADDR_ANY, htons(port));
 
-        // if there was an error when ararting the server the error flag will be turned on.
+        // if there was an error when starting the server the error flag will be turned on.
         if (server.getError())
         {
             throw runtime_error("failed to initialize socket\n");
         }
 
+        // get the info from the client and reply.
         while (true)
         {
             // Receive the message from the socket.
             string msg = server.recv(), k, DIS, coordinate;
-            vector<string> stringVec;
+
+            // make sure there was no problem with reciving the message from the client.
+            if (server.getError())
+            {
+                throw runtime_error("failed to recive\n");
+            }
+
             vector<double> vec;
             double num;
             int K;
+
+            // get the input as a stream.
             istringstream ss(msg);
+
+            // put all the coordinates in a vector.
             while (true)
             {
                 ss >> coordinate;
@@ -61,25 +72,52 @@ int main(int argc, char *argv[])
                     vec.push_back(num);
                     continue;
                 }
+
+                // the first string that isn't a number is the distance.
                 DIS = coordinate;
                 break;
             }
+
+            // the k is the last thing in the stream (the client checks fot other problems).
             ss >> k;
-            K = stoi(k);
+
+            // mskes sure k is positive.
+            K = abs(stoi(k));
+
+            // normelize k if it's too large.
             if (K > classified.size())
             {
                 K = classified.size();
             }
+
+            // makes sure the vector size is right. if not then it's an error.
             if (vec.size() != classified[0].getCoordinates().size())
             {
                 server.send("invalid input");
                 continue;
             }
+
+            // initialize KNN with the distance and the k.
             KNN knnClassifier(DIS, K);
+
+            // if the string given as input is not a valid distance code return error to the user.
+            if (knnClassifier.isDisError())
+            {
+                server.send("invalid input");
+                continue;
+            }
+
+            // run KNN and put the output in label.
             string label = knnClassifier.lunchKNN(classified, vec);
 
-            // Send the types back
+            // Send the label back.
             server.send(label);
+
+            // make sure there was no problem with sending the message to the client.
+            if (server.getError())
+            {
+                throw runtime_error("failed to send\n");
+            }
         }
     }
 

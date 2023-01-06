@@ -28,7 +28,7 @@ string KNN::lunchKNN(vector<Classifiable> &vectors, vector<double> &v)
 
 int KNN::isDisError()
 {
-    if (starter.getDisfuncType().compare("ERR"))
+    if (!starter.getDisfuncType().compare("ERR"))
     {
         return 1;
     }
