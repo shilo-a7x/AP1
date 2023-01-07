@@ -62,7 +62,7 @@ string TCPServer::recv()
         error = 1;
     }
 
-    // 
+    // if the client disconnected reset the clientSock.
     if (read_bytes == 0)
     {
         clientSock = 0;
