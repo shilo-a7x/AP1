@@ -14,8 +14,7 @@ private:
     const int BUFFER_SIZE = 4096;
     int sockId;
     int queueLen = 5;
-    struct sockaddr_in from;
-    int clientSock = 0;
+    struct sockaddr_in sin;
     int error = 0;
 
 public:
@@ -25,14 +24,19 @@ public:
     TCPServer(in_addr_t ip, in_port_t port);
 
     /*
+    Accept connection to client
+    */
+    int accept();
+
+    /*
     Send a string to the client.
     */
-    void send(string string);
+    void send(string string, int socket);
 
     /*
     Recive a string from the client.
     */
-    string recv();
+    string recv(int socket);
 
     // close the server.
     void close();

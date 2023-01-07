@@ -10,7 +10,6 @@ TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK
     }
 
     // initialize the data structure.
-    struct sockaddr_in sin;
     memset(&sin, 0, sizeof(sin));
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = ip;
@@ -29,11 +28,11 @@ TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK
     }
 }
 
-void TCPServer::send(std::string string)
+void TCPServer::send(std::string string, int socket)
 {
 
     // send the string through the socket.
-    int sent_bytes = ::send(this->clientSock, string.c_str(), strlen(string.c_str()), 0);
+    int sent_bytes = ::send(socket, string.c_str(), strlen(string.c_str()), 0);
     if (sent_bytes < 0)
     {
         error = 1;
@@ -56,7 +55,7 @@ string TCPServer::recv()
     // receive a message and save it in the buffer.
     char buffer[BUFFER_SIZE];
     int expected_data_len = BUFFER_SIZE;
-    int read_bytes = ::recv(this->clientSock, buffer, expected_data_len, 0);
+    int read_bytes = ::recv(socket, buffer, expected_data_len, 0);
     if (read_bytes < 0)
     {
         error = 1;
