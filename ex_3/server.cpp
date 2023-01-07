@@ -43,9 +43,8 @@ int main(int argc, char *argv[])
         // get the info from the client and reply.
         while (true)
         {
-            int clientSocket = server.accept();
             // Receive the message from the socket.
-            string msg = server.recv(clientSocket), k, DIS, coordinate;
+            string msg = server.recv(), k, DIS, coordinate;
 
             // make sure there was no problem with reciving the message from the client.
             if (server.getError())
@@ -94,7 +93,7 @@ int main(int argc, char *argv[])
             // makes sure the vector size is right. if not then it's an error.
             if (vec.size() != classified[0].getCoordinates().size())
             {
-                server.send("invalid input", clientSocket);
+                server.send("invalid input");
                 continue;
             }
 
@@ -104,7 +103,7 @@ int main(int argc, char *argv[])
             // if the string given as input is not a valid distance code return error to the user.
             if (knnClassifier.isDisError())
             {
-                server.send("invalid input", clientSocket);
+                server.send("invalid input");
                 continue;
             }
 
@@ -112,7 +111,7 @@ int main(int argc, char *argv[])
             string label = knnClassifier.lunchKNN(classified, vec);
 
             // Send the label back.
-            server.send(label, clientSocket);
+            server.send(label);
 
             // make sure there was no problem with sending the message to the client.
             if (server.getError())
