@@ -1,7 +1,7 @@
 #include "TCPserver.h"
 
 
-TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK_STREAM, 0))
+TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK_STREAM, 0)), from()
 {
 
     // initialize the socket and check it.
@@ -11,6 +11,7 @@ TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK
     }
 
     // initialize the data structure.
+    struct sockaddr_in sin;
     memset(&sin, 0, sizeof(sin));
     sin.sin_family = AF_INET;
     sin.sin_addr.s_addr = ip;
@@ -21,41 +22,43 @@ TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK
     {
         error = 1;
     }
-    // listen the client. check for errors along the way.
-    if (listen(sockId, this->queueLen) < 0)
-    {
-        error = 1;
-    }
 }
 
-int TCPServer::accept() {
-    struct sockaddr_in client_sin;
-    unsigned int addr_len = sizeof(client_sin);
-    int clientSock = ::accept(sockId, (struct sockaddr *)&client_sin, &addr_len);
-    if (clientSock < 0)
-    {
-        error = 1;
-    }
-    return clientSock;
-}
-
-void TCPServer::send(std::string string, int socket)
+void TCPServer::send(std::string string)
 {
 
     // send the string through the socket.
-    int sent_bytes = ::send(socket, string.c_str(), strlen(string.c_str()), 0);
+    int sent_bytes = ::send(this->clientSock, string.c_str(), strlen(string.c_str()), 0);
     if (sent_bytes < 0)
     {
         error = 1;
     }
 }
 
-string TCPServer::recv(int socket)
-{
+string TCPServer::recv()
+{ 
+
+    // check if a client is connected.
+    if (this->clientSock == 0)
+    {
+
+        // listen and accept the client. check for errors along the way.
+        if (listen(sockId, this->queueLen) < 0)
+        {
+            error = 1;
+        }
+        unsigned int addr_len = sizeof(this->from);
+        this->clientSock = accept(sockId, (struct sockaddr *)&from, &addr_len);
+        if (this->clientSock < 0)
+        {
+            error = 1;
+        }
+    }
+
     // receive a message and save it in the buffer.
     char buffer[BUFFER_SIZE];
     int expected_data_len = BUFFER_SIZE;
-    int read_bytes = ::recv(socket, buffer, expected_data_len, 0);
+    int read_bytes = ::recv(this->clientSock, buffer, expected_data_len, 0);
     if (read_bytes < 0)
     {
         error = 1;
