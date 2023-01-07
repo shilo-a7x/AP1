@@ -100,7 +100,6 @@ int main(int argc, char *argv[])
 
             // initialize KNN with the distance and the k.
             KNN knnClassifier(DIS, K);
-<<<<<<< HEAD
 
             // if the string given as input is not a valid distance code return error to the user.
             if (knnClassifier.isDisError())
@@ -110,9 +109,6 @@ int main(int argc, char *argv[])
             }
 
             // run KNN and put the output in label.
-=======
-            if ()
->>>>>>> sarel_branch
             string label = knnClassifier.lunchKNN(classified, vec);
 
             // Send the label back.
