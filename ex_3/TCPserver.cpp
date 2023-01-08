@@ -1,4 +1,4 @@
-#include "TCPserver.h"
+#include "TCPServer.h"
 
 TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK_STREAM, 0)), from()
 {

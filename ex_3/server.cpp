@@ -1,7 +1,7 @@
 #include "Classifiable.h"
 #include "KNN.h"
 #include "Reader.h"
-#include "TCPserver.h"
+#include "TCPServer.h"
 #include <iostream>
 #include <sstream>
 
