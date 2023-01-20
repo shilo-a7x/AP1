@@ -5,11 +5,10 @@
 
 using namespace std;
 
-template<class T>
-class ChangeAlgoSettingsCommand : public Command<T> {
+class ChangeAlgoSettingsCommand : public Command {
 public:
     void execute() override {
-        this->getIO()->write(this->getData()->getClassifier()->toString());
+        this->getIO()->write(this->getData()->getKnn()->detailString());
         string input = this->getIO()->read();
         if (input.empty()) {
             this->getIO()->write(this->getData()->getClassifier()->toString());

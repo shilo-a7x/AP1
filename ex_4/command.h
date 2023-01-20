@@ -6,29 +6,32 @@
 
 using namespace std;
 
-template<class T>
-class Command {
+class Command
+{
 private:
     string description;
     DefaultIO *io;
-    KnnData<T> *data;
+    KnnData *data;
+
 public:
-    string getDescription() {
+    string getDescription()
+    {
         return string(description);
     }
 
-    DefaultIO *getIO() {
+    DefaultIO *getIO()
+    {
         return io;
     }
 
-    KnnData<T> *getData() const {
+    KnnData *getData() const
+    {
         return data;
     }
 
     virtual void execute() = 0;
 
-    Command(string description, DefaultIO *io, KnnData<T> *data) :
-            description(move(description)), io(io), data(data) {}
+    Command(string description, DefaultIO *io, KnnData *data) : description(move(description)), io(io), data(data) {}
 };
 
-#endif 
+#endif

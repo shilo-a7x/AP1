@@ -16,41 +16,17 @@ private:
 public:
     KnnData(KNN *Knn) : knn(Knn) {}
 
-    void classify()
-    {
-        sclassified.clear();
-        for (Classifiable t : unclassified)
-        {
-            vector<double> tc = t.getCoordinates();
-            t.setLable(knn->lunchKNN(classified, tc));
-            sclassified.push_back(t.getLable());
-        }
-    }
+    void classify();
 
-    KNN *getKnn() const
-    {
-        return knn;
-    }
+    KNN *getKnn() const;
 
-    const vector<string> &getClassifiedStrings() const
-    {
-        return sclassified;
-    }
+    const vector<string> &getClassifiedStrings() const;
 
-    void setClassified(const vector<Classifiable> &v)
-    {
-        this->classified = v;
-    }
+    void setClassified(const vector<Classifiable> &v);
 
-    const vector<Classifiable> &getUnclassified() const
-    {
-        return unclassified;
-    }
+    const vector<Classifiable> &getUnclassified() const;
 
-    void setUnclassified(const vector<Classifiable> &v)
-    {
-        this->unclassified = v;
-    }
+    void setUnclassified(const vector<Classifiable> &v);
 };
 
 #endif

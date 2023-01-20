@@ -41,6 +41,8 @@ public:
     Checks if there is an error with the Distance member of the initializer.
     */
     int isDisError();
+
+    string detailString();
 };
 
 #endif

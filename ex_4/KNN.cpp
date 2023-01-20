@@ -34,3 +34,9 @@ int KNN::isDisError()
     }
     return 0;
 }
+
+string KNN::detailString()
+{
+    return "The current KNN parameters are: K = " + to_string(algo.getK()) + ", distance metric = " +
+            starter.getDisfuncType();
+}
