@@ -5,42 +5,52 @@
 
 using namespace std;
 
-template<class T>
-class KnnData {
+class KnnData
+{
 private:
-    KNN *Knn;
-    vector<T> test;
-    vector<string> classified;
-public:
-    ClientData(KNN *Knn) : knn(knn) {}
+    KNN *knn;
+    vector<Classifiable> unclassified;
+    vector<Classifiable> classified;
+    vector<string> sclassified;
 
-    void classify() {
-        classified.clear();
-        for (auto t: test) {
-            classified.push_back(Knn->classify(t));
+public:
+    KnnData(KNN *Knn) : knn(Knn) {}
+
+    void classify()
+    {
+        sclassified.clear();
+        for (Classifiable t : unclassified)
+        {
+            vector<double> tc = t.getCoordinates();
+            t.setLable(knn->lunchKNN(classified, tc));
+            sclassified.push_back(t.getLable());
         }
     }
 
-    KNN *getKnn() const {
+    KNN *getKnn() const
+    {
         return knn;
     }
 
-    const vector<string> &getClassified() const {
-        return classified;
+    const vector<string> &getClassifiedStrings() const
+    {
+        return sclassified;
     }
 
-    void setTrain(const vector<T> &v) {
-        classifier->setData(v);
+    void setClassified(const vector<Classifiable> &v)
+    {
+        this->classified = v;
     }
 
-    const vector<T> &getTest() const {
-        return test;
+    const vector<Classifiable> &getUnclassified() const
+    {
+        return unclassified;
     }
 
-    void setTest(const std::vector<T> &v) {
-        this->test = v;
+    void setUnclassified(const vector<Classifiable> &v)
+    {
+        this->unclassified = v;
     }
 };
-
 
 #endif
