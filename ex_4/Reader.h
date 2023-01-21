@@ -10,7 +10,7 @@ using namespace std;
  *
  */
 class Reader {
-private:
+public:
     /**
      * @brief Split a string to substrings as elements in vector.
      *
@@ -18,9 +18,8 @@ private:
      * @param delim a seperator char
      * @return vector<string>
      */
-    vector<string> split(const string &str, const char delim);
+    static vector<string> split(const string &str, const char delim);
 
-public:
     /**
      * @brief Read a csv file into a string matrix
      *
@@ -29,7 +28,15 @@ public:
      * @throws std::runtime_error if not in csv format;
      * ios_base::failure if file not found
      */
-    vector<vector<string>> readCSV(const string &path);
+    static vector<vector<string>> readCSV(const string &path);
+
+    /**
+     * @brief Read a file into a stream of strings
+     * 
+     * @param path 
+     * @return string 
+     */
+    static string readToString(const string &path);
 };
 
 #endif
