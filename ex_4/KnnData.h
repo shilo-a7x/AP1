@@ -9,8 +9,8 @@ class KnnData
 {
 private:
     KNN *knn;
-    vector<Classifiable> unclassified;
-    vector<Classifiable> classified;
+    vector<Classifiable> test;
+    vector<Classifiable> train;
     vector<string> sclassified;
 
 public:
@@ -22,11 +22,11 @@ public:
 
     const vector<string> &getClassifiedStrings() const;
 
-    void setClassified(const vector<Classifiable> &v);
+    void setTrain(const vector<Classifiable> &v);
 
-    const vector<Classifiable> &getUnclassified() const;
+    const vector<Classifiable> &getTest() const;
 
-    void setUnclassified(const vector<Classifiable> &v);
+    void setTest(const vector<Classifiable> &v);
 };
 
 #endif

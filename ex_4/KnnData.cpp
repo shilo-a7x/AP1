@@ -3,10 +3,10 @@
 void KnnData::classify()
 {
     sclassified.clear();
-    for (Classifiable t : unclassified)
+    for (Classifiable t : test)
     {
         vector<double> tc = t.getCoordinates();
-        t.setLable(knn->lunchKNN(classified, tc));
+        t.setLable(knn->lunchKNN(train, tc));
         sclassified.push_back(t.getLable());
     }
 }
@@ -21,17 +21,17 @@ const vector<string> &KnnData::getClassifiedStrings() const
     return sclassified;
 }
 
-void KnnData::setClassified(const vector<Classifiable> &v)
+void KnnData::setTrain(const vector<Classifiable> &v)
 {
-    this->classified = v;
+    this->train = v;
 }
 
-const vector<Classifiable> &KnnData::getUnclassified() const
+const vector<Classifiable> &KnnData::getTest() const
 {
-    return unclassified;
+    return test;
 }
 
-void KnnData::setUnclassified(const vector<Classifiable> &v)
+void KnnData::setTest(const vector<Classifiable> &v)
 {
-    this->unclassified = v;
+    this->test = v;
 }

@@ -29,8 +29,15 @@ public:
         return data;
     }
 
+    /**
+     * The command that each inheriting class needs to impement.
+    */
     virtual void execute() = 0;
 
+    /**
+     * A constructor that works for each command.
+     * Initializes the description on the spot.
+    */
     Command(string description, DefaultIO *io, KnnData *data) : description(move(description)), io(io), data(data) {}
 };
 
