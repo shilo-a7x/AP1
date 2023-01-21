@@ -11,7 +11,6 @@ public:
         this->getIO()->write(this->getData()->getKnn()->detailString());
         string input = this->getIO()->read();
         if (input.empty()) {
-            this->getIO()->write(this->getData()->getClassifier()->toString());
             return;
         }
         vector<string> parameters = utils::split(input, ' ');
