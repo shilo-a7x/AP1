@@ -1,6 +1,6 @@
 #include "ChangeSetsCommand.h"
 
-void ChangeSetsCommand::execute() override
+void ChangeSetsCommand::execute()
     {
         this->getIO()->write(this->getData()->getKnn()->detailString());
         string input = this->getIO()->read();
