@@ -29,6 +29,16 @@ vector<vector<string>> Reader::readCSV(const string &path) {
     return data;
 }
 
+string Reader::readToString(const string &path) {
+    ifstream inputFile(path);
+    if (!inputFile.is_open()) {
+        throw ios_base::failure("File not found");
+    }
+    ostringstream outStream;
+    outStream << inputFile.rdbuf();
+    return outStream.str();
+}
+
 vector<string> Reader::split(const string &str, const char delim) {
     istringstream ss(str);
     string cell;
