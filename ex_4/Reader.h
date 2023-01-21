@@ -9,8 +9,9 @@ using namespace std;
  * @brief This class is in charge of reading files.
  *
  */
-class Reader {
-private:
+class Reader
+{
+public:
     /**
      * @brief Split a string to substrings as elements in vector.
      *
@@ -18,9 +19,8 @@ private:
      * @param delim a seperator char
      * @return vector<string>
      */
-    vector<string> split(const string &str, const char delim);
+    static vector<string> split(const string &str, const char delim);
 
-public:
     /**
      * @brief Read a csv file into a string matrix
      *
