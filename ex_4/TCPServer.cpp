@@ -1,4 +1,5 @@
 #include "TCPServer.h"
+#include <stdexcept>
 
 TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK_STREAM, 0)), from() {
 
@@ -24,46 +25,16 @@ TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK
     }
 }
 
-void TCPServer::send(std::string string) {
-    // send the string through the socket.
-    int sent_bytes = ::send(this->clientSock, string.c_str(), strlen(string.c_str()), 0);
-    if (sent_bytes < 0) {
-        error = 1;
-    }
-}
-
 int TCPServer::accept() {
-    
+    struct sockaddr_in client_sin;
+    unsigned int addr_len = sizof(client_sin);
+    int clientSock = ::accept(sockId, (struct sockaddr *)&client_sin, addr_len);
+    if (clientSock < 0) {
+        return -1;
+    }
+    return clientSock;
 }
 
-string TCPServer::recv() {
-    // check if a client is connected.
-    if (this->clientSock == 0) {
-        unsigned int addr_len = sizeof(this->from);
-        this->clientSock = accept(sockId, (struct sockaddr *)&from, &addr_len);
-        if (this->clientSock < 0) {
-            error = 1;
-        }
-    }
-
-    // receive a message and save it in the buffer.
-    char buffer[BUFFER_SIZE];
-    int expected_data_len = BUFFER_SIZE;
-    int read_bytes = ::recv(this->clientSock, buffer, expected_data_len, 0);
-    if (read_bytes < 0) {
-        error = 1;
-    }
-
-    // if the client left reset the clientSock.
-    if (read_bytes == 0) {
-        clientSock = 0;
-        return recv();
-    }
-
-    // create a string and return it.
-    string res(buffer, strlen(buffer));
-    return res;
-}
 void TCPServer::close() {
     ::close(this->sockId);
 }

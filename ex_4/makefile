@@ -11,6 +11,13 @@ SOURCE1	= TCPClient.cpp client.cpp
 HEADER1 = TCPClient.h
 OUT1 = client.out
 
+OBJ2 = Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o KnnData.o ChangeSetsCommand.o /
+	Command.o UploadCommand.o DownloadResultsCommand.o DisplayStringCommand.o ClassifyCommand.o CLI.o StandardIO.o
+SOURCE2 = Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Reader.cpp KnnData.cpp ChangeSetsCommand.cpp /
+	Command.cpp UploadCommand.cpp DownloadResultsCommand.cpp DisplayStringCommand.cpp ClassifyCommand.cpp CLI.cpp StandardIO.cpp
+OUT2 = test.out 
+
+
 CC	 = g++
 FLAGS	 = -g -c
 LFLAGS	 = 
@@ -22,6 +29,9 @@ server: $(OBJS0) $(LFLAGS)
 
 client: $(OBJS1) $(LFLAGS)
 	$(CC) -g $(OBJS1) -o $(OUT1) $(LFLAGS)
+
+test: $(OBJS2) $(LFLAGS)
+	$(CC) -g $(OBJS2) -o $(OUT2) $(LFLAGS)
 
 Algorithm.o: Algorithm.cpp
 	$(CC) $(FLAGS) Algorithm.cpp -std=c++11
@@ -52,6 +62,30 @@ TCPClient.o: TCPClient.cpp
 
 client.o: client.cpp
 	$(CC) $(FLAGS) client.cpp -std=c++11
+
+ChangeSetsCommand.o: ChangeSetsCommand.cpp
+	$(CC) $(FLAGS) ChangeSetsCommand.cpp -std=c++11
+
+ClassifyCommand.o: ClassifyCommand.cpp
+	$(CC) $(FLAGS) ClassifyCommand.cpp -std=c++11
+
+CLI.o: CLI.cpp
+	$(CC) $(FLAGS) CLI.cpp -std=c++11
+
+DisplayStringCommand.o: DisplayStringCommand.cpp
+	$(CC) $(FLAGS) DisplayStringCommand.cpp -std=c++11
+
+DownloadResultsCommand.o: DownloadResultsCommand.cpp
+	$(CC) $(FLAGS) DownloadResultsCommand.cpp -std=c++11
+
+KnnData.o: KnnData.cpp
+	$(CC) $(FLAGS) KnnData.cpp -std=c++11
+
+StandardIO.o: StandardIO.cpp
+	$(CC) $(FLAGS) StandardIO.cpp -std=c++11
+
+UploadCommand.o: UploadCommand.cpp
+	$(CC) $(FLAGS) UploadCommand.cpp -std=c++11
 
 clean:
 	rm -f $(OBJS) $(OUT)

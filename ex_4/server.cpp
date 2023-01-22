@@ -4,6 +4,7 @@
 #include "TCPServer.h"
 #include <iostream>
 #include <sstream>
+#include <thread>
 
 using namespace std;
 
@@ -26,12 +27,6 @@ int main(int argc, char *argv[]) {
         int port = atoi(argv[1]);
         TCPServer server(INADDR_ANY, htons(port));
 
-        while (/* condition */)
-        {
-            /* code */
-        }
-        
-
         // if there was an error when starting the server the error flag will be turned on.
         if (server.getError()) {
             throw runtime_error("failed to initialize socket\n");
@@ -39,17 +34,8 @@ int main(int argc, char *argv[]) {
 
         // get the info from the client and reply.
         while (true) {
+            int clientSocket = server.accept();
 
-            // make sure there was no problem with reciving the message from the client.
-            if (server.getError()) {
-                throw runtime_error("failed to receive\n");
-            }
-
-
-            // make sure there was no problem with sending the message to the client.
-            if (server.getError()) {
-                throw runtime_error("failed to send\n");
-            }
         }
     }
 

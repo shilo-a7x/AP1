@@ -10,7 +10,7 @@ using namespace std;
 class TCPServer {
 private:
     // private variables for initializing the socket and detecting errors.
-    
+    int sockId;
     int queueLen = 5;
 
 public:
