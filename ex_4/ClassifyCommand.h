@@ -13,7 +13,7 @@ public:
     /**
      * A constructor function.
      */
-    ClassifyCommand(DefaultIO *io, KnnData *data) : Command("upload an unclassified csv data file", io, data) {}
+    ClassifyCommand(DefaultIO *io, KnnData *data) : Command("classify data", io, data) {}
 };
 
 #endif
