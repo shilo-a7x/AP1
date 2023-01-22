@@ -13,7 +13,7 @@ public:
     /**
      * A constructor function.
      */
-    DisplayStringCommand(DefaultIO *io, KnnData *data) : Command("display data", io, data) {}
+    DisplayStringCommand(DefaultIO *io, KnnData *data) : Command("display results", io, data) {}
 };
 
 #endif
