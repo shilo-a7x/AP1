@@ -17,35 +17,12 @@ TCPClient::TCPClient(in_addr_t ip, in_port_t port)
     }
 }
 
-void TCPClient::send(string msg)
-{
-    int sent_bytes = ::send(sock, msg.c_str(), strlen(msg.c_str()), 0);
-    if (sent_bytes < 0)
-    {
-        throw runtime_error("error sending to server");
-    }
-}
-
-string TCPClient::recv()
-{
-    char buffer[buffer_size];
-    memset(buffer, 0, sizeof(buffer));
-    int expected_data_len = sizeof(buffer);
-    int read_bytes = ::recv(sock, buffer, expected_data_len, 0);
-    if (read_bytes < 0)
-    {
-        throw runtime_error("error receiving from server");
-    }
-    string msg(buffer, strlen(buffer));
-    return msg;
-}
-
 void TCPClient::close()
 {
     ::close(sock);
 }
 
-int getSocket()
+int TCPClient::getSocket()
 {
     return sock;
 }
