@@ -32,6 +32,10 @@ void TCPServer::send(std::string string) {
     }
 }
 
+int TCPServer::accept() {
+    
+}
+
 string TCPServer::recv() {
     // check if a client is connected.
     if (this->clientSock == 0) {
