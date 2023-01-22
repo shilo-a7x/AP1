@@ -1,4 +1,5 @@
 #include "Command.h"
+#include <sstream>
 
 #ifndef DOWNLOADCOMMAND_H
 #define DOWNLOADCOMMAND_H

@@ -14,5 +14,15 @@ void DownloadResultsCommand::execute()
         return;
     }
 
-    
+    string path = this->getIO()->read();
+    stringstream msg;
+
+    for (int i = 0; i < this->getData()->getClassifiedStrings().size(); i++)
+    {
+        msg << to_string(i + 1) + '\t' + this->getData()->getClassifiedStrings()[i] << "\n";
+    }
+    this->getIO()->write(msg.str());
+
+    // Waiting for client to press enter.
+    this->getIO()->read();
 }
