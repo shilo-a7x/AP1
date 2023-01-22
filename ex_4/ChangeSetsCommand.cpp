@@ -24,7 +24,7 @@ void ChangeSetsCommand::execute()
             this->getIO()->write("invalid value for K\n");
             flag = 1;
         }
-        if (k < 0 && !flag)
+        if (k < 1 && !flag)
         {
             this->getIO()->write("invalid value for K\n");
             flag = 1;
