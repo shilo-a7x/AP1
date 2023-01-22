@@ -12,8 +12,7 @@ header for the KNN class.
 
 using namespace std;
 
-class KNN
-{
+class KNN {
 private:
     /*
     Two classes that holds the functions that lunchKNN uses.

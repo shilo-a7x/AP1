@@ -48,15 +48,14 @@ vector<Classifiable> Classifiable::stringToVector(const string &data, bool isCla
     vector<string> elements = Reader::split(data, '\n');
     vector<Classifiable> out;
     int length = Reader::split(elements[0], ',').size();
-    for (const string &e: elements) {
+    for (const string &e : elements) {
         vector<string> coordinates = Reader::split(e, ',');
         if (coordinates.size() != length) {
             throw invalid_argument("Classifiables dimensions must agree");
         }
         try {
             out.emplace_back(coordinates, isClassified);
-        }
-        catch (const exception &e) {
+        } catch (const exception &e) {
             throw invalid_argument("Invalid coordinates");
         }
     }

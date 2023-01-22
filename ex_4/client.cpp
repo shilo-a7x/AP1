@@ -1,7 +1,7 @@
 #include "TCPClient.h"
+#include <arpa/inet.h>
 #include <iostream>
 #include <sstream>
-#include <arpa/inet.h>
 
 using namespace std;
 
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
         return 0;
     }
     try {
-        const char* ip = argv[1];
+        const char *ip = argv[1];
         int port = atoi(argv[2]);
         TCPClient client(inet_addr(ip), htons(port));
         // receive input from user infinitely
@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
                     msg += token;
                     msg.append(" ");
                     break;
-                }                
+                }
             }
             isValid = false;
             if (iss >> token && is_number(token)) {
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
                 msg.append("\n");
                 isValid = true;
             }
-            if (!isValid) { 
+            if (!isValid) {
                 cout << "invalid input" << endl;
                 continue;
             }
@@ -64,7 +64,8 @@ int main(int argc, char *argv[]) {
             cout << client.recv() << endl;
         }
     } catch (const exception &e) {
-        cout << "Unable to run the client!\n" << e.what() << endl;
+        cout << "Unable to run the client!\n"
+             << e.what() << endl;
         return 0;
     }
     return 0;
@@ -73,8 +74,7 @@ int main(int argc, char *argv[]) {
 /*
 return true if the string given represents a double and false otherwise.
 */
-bool is_number(const string &s)
-{
+bool is_number(const string &s) {
     long double ld;
 
     // return true if the string given to the buffer is a long double and false if not.

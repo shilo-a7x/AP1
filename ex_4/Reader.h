@@ -32,9 +32,9 @@ public:
 
     /**
      * @brief Read a file into a stream of strings
-     * 
-     * @param path 
-     * @return string 
+     *
+     * @param path
+     * @return string
      */
     static string readToString(const string &path);
 };
