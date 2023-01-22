@@ -1,5 +1,4 @@
 #include "Command.h"
-#include <thread>
 
 #ifndef CLASSIFYCOMMAND_H
 #define CLASSIFYCOMMAND_H
