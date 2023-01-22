@@ -75,6 +75,15 @@ public:
      * @return vector<Classifiable>
      */
     static vector<Classifiable> toVector(const vector<vector<string>> &data, bool isClassified);
+
+    /**
+     * @brief Convert a string (csv format) into a vector of classifiables
+     *
+     * @param data string of classifiables (csv format)
+     * @param isClassified
+     * @return vector<Classifiable>
+     */
+    static vector<Classifiable> stringToVector(const string &data, bool isClassified);
 };
 
 #endif

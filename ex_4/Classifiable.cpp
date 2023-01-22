@@ -1,4 +1,6 @@
 #include "Classifiable.h"
+#include "Reader.h"
+#include <stdexcept>
 
 Classifiable::Classifiable(const vector<string> &v, bool isClassified) : isClassified(isClassified)
 {
@@ -59,4 +61,22 @@ vector<Classifiable> Classifiable::toVector(const vector<vector<string>> &data, 
         vOut.push_back(Classifiable(v, isClassified));
     }
     return vOut;
+}
+
+vector<Classifiable> Classifiable::stringToVector(const string &data, bool isClassified) {
+    vector<string> elements = Reader::split(data, '\n');
+    vector<Classifiable> out;
+    int length = Reader::split(elements[0], ',').size();
+    for (const string &e : elements) {
+        vector<string> coordinates = Reader::split(e, ',');
+        if (coordinates.size() != length) {
+            throw invalid_argument("Classifiables dimensions must agree");
+        }
+        try {
+            out.emplace_back(coordinates, isClassified);
+        } catch (const exception &e) {
+            throw invalid_argument("Invalid coordinates");
+        }
+    }
+    return out;
 }

@@ -1,15 +1,13 @@
+#include <cstring>
 #include <netinet/in.h>
+#include <string>
 #include <sys/socket.h>
 #include <unistd.h>
-#include <string>
-#include <cstring>
 
 using namespace std;
 
-class TCPServer
-{
+class TCPServer {
 private:
-
     // private variables for initializing the socket and detecting errors.
     const int BUFFER_SIZE = 4096;
     int sockId;

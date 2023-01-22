@@ -11,8 +11,7 @@ header for the Initializer class.
 
 using namespace std;
 
-class Initializer
-{
+class Initializer {
 private:
     /*
     Defines which distance method will be used during the initialization.

@@ -9,8 +9,7 @@ using namespace std;
  * @brief This class is in charge of reading files.
  *
  */
-class Reader
-{
+class Reader {
 public:
     /**
      * @brief Split a string to substrings as elements in vector.
@@ -29,7 +28,15 @@ public:
      * @throws std::runtime_error if not in csv format;
      * ios_base::failure if file not found
      */
-    vector<vector<string>> readCSV(const string &path);
+    static vector<vector<string>> readCSV(const string &path);
+
+    /**
+     * @brief Read a file into a stream of strings
+     *
+     * @param path
+     * @return string
+     */
+    static string readToString(const string &path);
 };
 
 #endif

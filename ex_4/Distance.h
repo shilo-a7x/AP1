@@ -61,8 +61,8 @@ public:
 
     /**
      * @brief calculates distance between 2 vectors according to
-     * the metric type 
-     * 
+     * the metric type
+     *
      * @param vec1 n dimension vector
      * @param vec2 n dimension vector
      * @return double
