@@ -16,7 +16,6 @@ using namespace std;
  */
 class TCPClient {
 private:
-    static const int buffer_size = 4096;
     int sock;
     struct sockaddr_in sin;
 
@@ -48,6 +47,8 @@ public:
      *
      */
     void close();
+
+    int getSocket();
 };
 
 #endif
