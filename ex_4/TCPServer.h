@@ -1,3 +1,4 @@
+#include "SocketIO.h"
 #include <cstring>
 #include <netinet/in.h>
 #include <string>
@@ -9,12 +10,8 @@ using namespace std;
 class TCPServer {
 private:
     // private variables for initializing the socket and detecting errors.
-    const int BUFFER_SIZE = 4096;
-    int sockId;
+    
     int queueLen = 5;
-    struct sockaddr_in from;
-    int clientSock = 0;
-    int error = 0;
 
 public:
     /*
@@ -26,6 +23,11 @@ public:
     Send a string to the client.
     */
     void send(string string);
+
+    /*
+    Accept a connection with a client
+    */
+    int accept();
 
     /*
     Recive a string from the client.
