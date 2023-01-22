@@ -11,7 +11,7 @@ void ChangeSetsCommand::execute()
         vector<string> param = Reader::split(input, ' ');
         if (param.size() != 2)
         {
-            this->getIO()->write("invalid value for K\ninvalid value for metric\n");
+            this->getIO()->write("invalid value for K\ninvalid value for metric");
             return;
         }
         int k, flag = 0;
@@ -21,18 +21,18 @@ void ChangeSetsCommand::execute()
         }
         catch (const invalid_argument &exception)
         {
-            this->getIO()->write("invalid value for K\n");
+            this->getIO()->write("invalid value for K");
             flag = 1;
         }
         if (k < 1 && !flag)
         {
-            this->getIO()->write("invalid value for K\n");
+            this->getIO()->write("invalid value for K");
             flag = 1;
         }
         Distance dist(param[1]);
         if (!dist.getType().compare("ERR"))
         {
-            this->getIO()->write("invalid value for metric\n");
+            this->getIO()->write("invalid value for metric");
             return;
         }
         else

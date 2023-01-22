@@ -1,4 +1,3 @@
-#include "KnnData.h"
 #include "Command.h"
 
 #ifndef UPLOADCOMMAND_H

@@ -4,7 +4,7 @@ void DisplayStringCommand::execute()
 {
     if (this->getData()->getTest().empty())
     {
-        this->getIO()->write("please upload data\n");
+        this->getIO()->write("please upload data");
         return;
     }
 

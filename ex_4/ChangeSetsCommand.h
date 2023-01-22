@@ -1,5 +1,4 @@
 #include "Command.h"
-#include "Reader.h"
 #include "Distance.h"
 
 #ifndef CHANGEALGOSETTINGS_H
