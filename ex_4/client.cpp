@@ -5,14 +5,17 @@
 #include <sstream>
 #include <fstream>
 #include <thread>
+#include <regex>
+#include <sys/stat.h>
 #include "Reader.h"
 
 using namespace std;
 
 // declaration.
 void handleMessage(const std::string &msg, TCPClient *client);
-void receiving(TCPClient *client);
+void receiving(TCPClient *client, SocketIO *sio);
 inline bool isFile(const std::string &name);
+void writeFile(const string &path, const string &msg);
 
 /*
 The main function for lunching the client.
@@ -26,12 +29,23 @@ int main(int argc, char *argv[])
     }
     try
     {
-
         const char *ip = argv[1];
         int port = atoi(argv[2]);
         TCPClient client(inet_addr(ip), htons(port));
         SocketIO sio(client.getSocket());
-        thread thread(receiving, &client);
+        thread thread(receiving, &client, &sio);
+
+        // receive input from user infinitely
+        while (true)
+        {
+            string response;
+            getline(cin, response);
+            if (isFile(response))
+            {
+                response = Reader::readToString(response);
+            }
+            sio.write(response);
+        }
     }
     catch (const exception &e)
     {
@@ -39,25 +53,14 @@ int main(int argc, char *argv[])
              << e.what() << endl;
         return 0;
     }
-    // receive input from user infinitely
-    while (true)
-    {
-        string response;
-        getline(cin, response);
-        if (isFile(response))
-        {
-            response = Reader::readToString(response);
-        }
-        client.send(response);
-    }
     return 0;
 }
 
-void receiving(TCPClient *client)
+void receiving(TCPClient *client, SocketIO *sio)
 {
     while (true)
     {
-        const string &msg = client->recv();
+        const string &msg = sio->read();
         handleMessage(msg, client);
     }
 }
