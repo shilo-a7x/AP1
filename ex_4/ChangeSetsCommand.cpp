@@ -1,4 +1,5 @@
 #include "ChangeSetsCommand.h"
+#include <stdexcept>
 
 void ChangeSetsCommand::execute() {
     // write the current settings on the client's screen.
@@ -32,20 +33,17 @@ void ChangeSetsCommand::execute() {
         flag = 1;
     }
 
-    // check if the metir is legal.
+    // check if the metric is valid.
     Distance dist(param[1]);
-    if (!dist.getType().compare("ERR")) {
+    if (!dist.isMetricValid()) {
         this->getIO()->write("invalid value for metric");
+        flag = 1;
+    }
+    // if k was bad don't change the settings.
+    if (flag) {
         return;
     } else {
-        // if k was bad don't change the settings.
-        if (flag) {
-            return;
-        }
-
         // if everything is ok, change the settings.
-        else {
-            this->getData()->getKnn()->setKNN(param[1], k);
-        }
+        this->getData()->getKnn()->setKNN(param[1], k);
     }
 }

@@ -3,14 +3,26 @@
 
 Distance::Distance(string type) {
     // Makes sure that the distance type we are using is legit.
-    if (!type.compare("MAN") || !type.compare("AUC") || !type.compare("CHB") || !type.compare("CAN") || !type.compare("MIN")) {
-        this->type = type;
-    }
+    // if (!type.compare("MAN") || !type.compare("AUC") || !type.compare("CHB") || !type.compare("CAN") || !type.compare("MIN")) {
+    //     this->type = type;
+    // }
 
-    // Puts 'ERR' in the string.
-    else {
+    // // Puts 'ERR' in the string.
+    // else {
+    //     this->type = "ERR";
+    //     this->error = true;
+    // }
+    this->type = type;
+    if (!isMetricValid()) {
         this->type = "ERR";
     }
+}
+
+bool Distance::isMetricValid() {
+    if (!type.compare("MAN") || !type.compare("AUC") || !type.compare("CHB") || !type.compare("CAN") || !type.compare("MIN")) {
+        return true;
+    }
+    return false;
 }
 
 string Distance::getType() {

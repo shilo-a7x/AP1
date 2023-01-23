@@ -17,6 +17,8 @@ private:
     A string which defines which distance method to use.
     */
     string type;
+    // flag for invalid metric
+    bool error;
 
     /*
     Calculates the euclidean distance between two given vectors.
@@ -48,6 +50,11 @@ public:
     Constructor function
     */
     Distance(string type);
+
+    /*
+    Check if metric is AUC || MAN || CHB || CAN || MIN
+    */
+    bool isMetricValid();
 
     /*
     Getter for the type parameter.

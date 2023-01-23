@@ -9,7 +9,7 @@ void UploadCommand::execute() {
     }
     try {
         this->getData()->setTrain(Classifiable::stringToVector(input, true));
-    } catch (exception &e) {
+    } catch (const exception &e) {
         this->getIO()->write("invalid input");
         return;
     }
@@ -22,7 +22,7 @@ void UploadCommand::execute() {
     }
     try {
         this->getData()->setTest(Classifiable::stringToVector(input, false));
-    } catch (std::exception &e) {
+    } catch (const exception &e) {
         this->getIO()->write("invalid input");
         return;
     }
