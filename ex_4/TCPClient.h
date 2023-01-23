@@ -36,6 +36,6 @@ public:
     void close();
 
     int getSocket();
-}
+};
 
 #endif
