@@ -12,6 +12,7 @@ private:
     // private variables for initializing the socket and detecting errors.
     int sockId;
     int queueLen = 5;
+    int clientNum = 0;
 
 public:
     /*
@@ -20,23 +21,17 @@ public:
     TCPServer(in_addr_t ip, in_port_t port);
 
     /*
-    Send a string to the client.
-    */
-    void send(string string);
-
-    /*
     Accept a connection with a client
     */
     int accept();
-
-    /*
-    Recive a string from the client.
-    */
-    string recv();
 
     // close the server.
     void close();
 
     // check if there was an error along the way somewhere.
     int getError();
+
+    void disconnectClient();
+
+    int getClientNum();
 };

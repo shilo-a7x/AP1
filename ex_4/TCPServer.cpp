@@ -32,6 +32,7 @@ int TCPServer::accept() {
     if (clientSock < 0) {
         return -1;
     }
+    clientNum++;
     return clientSock;
 }
 
@@ -40,4 +41,12 @@ void TCPServer::close() {
 }
 int TCPServer::getError() {
     return error;
+}
+
+void TCPServer::disconnectClient() {
+    clientNum--;
+}
+
+int TCPServer::getClientNum() {
+    return clientNum;
 }
