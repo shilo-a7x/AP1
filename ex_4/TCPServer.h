@@ -1,3 +1,6 @@
+#ifndef TCPSERVER_H
+#define TCPSERVER_H
+
 #include "SocketIO.h"
 #include <cstring>
 #include <netinet/in.h>
@@ -32,3 +35,5 @@ public:
     int getError();
 
 };
+
+#endif

@@ -37,3 +37,5 @@ public:
 
     int getSocket();
 }
+
+#endif
