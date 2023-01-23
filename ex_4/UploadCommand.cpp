@@ -2,8 +2,7 @@
 
 void UploadCommand::execute() {
     this->getIO()->write("Please upload your local train CSV file.");
-    string path = this->getIO()->read();
-    string input = Reader::readToString(path);
+    string input = this->getIO()->read();
     if (input.empty()) {
         this->getIO()->write("invalid input");
         return;
@@ -16,8 +15,7 @@ void UploadCommand::execute() {
     }
     this->getIO()->write("Upload Complete.");
     this->getIO()->write("Please upload your local test CSV file.");
-    path = this->getIO()->read();
-    input = Reader::readToString(path);
+    input = this->getIO()->read();
     if (input.empty()) {
         this->getIO()->write("invalid file");
         return;
