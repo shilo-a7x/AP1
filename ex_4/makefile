@@ -23,7 +23,7 @@ OUT2 = test.out
 
 CC	 = g++
 FLAGS	 = -g -c
-LFLAGS	 = 
+LFLAGS	 = -lpthread
 
 all: server client
 

@@ -1,4 +1,5 @@
 #include "Command.h"
+#include "Reader.h"
 
 #ifndef UPLOADCOMMAND_H
 #define UPLOADCOMMAND_H
