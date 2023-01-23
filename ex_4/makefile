@@ -11,8 +11,8 @@ SOURCE0	= server.cpp Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp
 HEADER0	= Algorithm.h Classifiable.h Distance.h Initializer.h KNN.h Reader.h TCPServer.h
 OUT0 = server.out
 
-OBJS1	= TCPClient.o client.o
-SOURCE1	= TCPClient.cpp client.cpp
+OBJS1	= TCPClient.o client.o Reader.o SocketIO.o
+SOURCE1	= TCPClient.cpp client.cpp Reader.cpp SocketIO.cpp
 HEADER1 = TCPClient.h
 OUT1 = client.out
 
