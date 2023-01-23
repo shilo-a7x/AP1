@@ -13,7 +13,7 @@ void DownloadResultsCommand::execute()
         this->getIO()->write("please classify the data");
         return;
     }
-
+    this->getIO()->write("enter a path for the csv file");
     string path = this->getIO()->read();
     stringstream msg;
     // Encapsulate the message in order for it to be saved instead of printed
