@@ -6,36 +6,31 @@
 
 using namespace std;
 
-class Command
-{
+class Command {
 private:
     string description;
     DefaultIO *io;
     KnnData *data;
 
 public:
-
     /**
      * A getter fot the commands menu string.
-    */
-    string getDescription()
-    {
+     */
+    string getDescription() {
         return string(description);
     }
 
     /**
      * A getter for the commands io.
-    */
-    DefaultIO *getIO()
-    {
+     */
+    DefaultIO *getIO() {
         return io;
     }
 
     /**
      * A getter for the commands data.
-    */
-    KnnData *getData() const
-    {
+     */
+    KnnData *getData() const {
         return data;
     }
 
@@ -48,7 +43,9 @@ public:
      * A constructor that works for each command.
      * Initializes the description on the spot.
      */
-    Command(string description, DefaultIO *io, KnnData *data) : description(move(description)), io(io), data(data) {}
+    Command(string description, DefaultIO *io, KnnData *data) : description(description), io(io), data(data) {}
+
+    virtual ~Command() = default;
 };
 
 #endif

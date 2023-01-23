@@ -5,8 +5,7 @@
 
 using namespace std;
 
-class UploadCommand : public Command
-{
+class UploadCommand : public Command {
 public:
     void execute() override;
 

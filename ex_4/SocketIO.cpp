@@ -1,8 +1,8 @@
 #include "SocketIO.h"
-#include <unistd.h>
 #include <cstring>
-#include <sys/socket.h>
 #include <stdexcept>
+#include <sys/socket.h>
+#include <unistd.h>
 
 SocketIO::SocketIO(int socket) : socket(socket) {}
 

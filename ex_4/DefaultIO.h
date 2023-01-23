@@ -12,5 +12,4 @@ public:
     virtual void write(string) = 0;
 };
 
-
 #endif

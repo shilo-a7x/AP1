@@ -1,5 +1,7 @@
-OBJS	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o TCPClient.o client.o
-OUT	= server.out client.out
+OBJS	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o \
+	TCPClient.o client.o StandardMain.o KnnData.o ChangeSetsCommand.o UploadCommand.o \
+	DownloadResultsCommand.o DisplayStringCommand.o ClassifyCommand.o CLI.o StandardIO.o
+OUT	= server.out client.out test.out
 
 OBJS0	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o
 SOURCE0	= Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Reader.cpp TCPServer.cpp server.cpp
@@ -11,10 +13,11 @@ SOURCE1	= TCPClient.cpp client.cpp
 HEADER1 = TCPClient.h
 OUT1 = client.out
 
-OBJS2 = Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o KnnData.o ChangeSetsCommand.o \
+OBJS2 = StandardMain.o Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o KnnData.o ChangeSetsCommand.o \
 	UploadCommand.o DownloadResultsCommand.o DisplayStringCommand.o ClassifyCommand.o CLI.o StandardIO.o
-SOURCE2 = Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Reader.cpp KnnData.cpp ChangeSetsCommand.cpp \
-	UploadCommand.cpp DownloadResultsCommand.cpp DisplayStringCommand.cpp ClassifyCommand.cpp CLI.cpp StandardIO.cpp
+SOURCE2 = StandardMain.cpp Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Reader.cpp \
+	KnnData.cpp ChangeSetsCommand.cpp UploadCommand.cpp DownloadResultsCommand.cpp DisplayStringCommand.cpp \
+	ClassifyCommand.cpp CLI.cpp StandardIO.cpp
 OUT2 = test.out 
 
 
@@ -86,6 +89,9 @@ StandardIO.o: StandardIO.cpp
 
 UploadCommand.o: UploadCommand.cpp
 	$(CC) $(FLAGS) UploadCommand.cpp -std=c++11
+
+StandardMain.o: StandardMain.cpp
+	$(CC) $(FLAGS) StandardMain.cpp -std=c++11
 
 clean:
 	rm -f $(OBJS) $(OUT)

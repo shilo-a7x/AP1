@@ -14,8 +14,7 @@ using namespace std;
  * @brief this class is a TCP client
  *
  */
-class TCPClient
-{
+class TCPClient {
 private:
     int sock;
     struct sockaddr_in sin;

@@ -2,62 +2,48 @@
 #include "Reader.h"
 #include <stdexcept>
 
-Classifiable::Classifiable(const vector<string> &v, bool isClassified) : isClassified(isClassified)
-{
-    if (isClassified)
-    {
-        for (int i = 0; i < v.size() - 1; i++)
-        {
+Classifiable::Classifiable(const vector<string> &v, bool isClassified) : isClassified(isClassified) {
+    if (isClassified) {
+        for (int i = 0; i < v.size() - 1; i++) {
             coordinates.push_back(stod(v[i]));
         }
         label = v[v.size() - 1];
-    }
-    else
-    {
-        for (const auto &s : v)
-        {
+    } else {
+        for (const auto &s : v) {
             coordinates.push_back(stod(s));
         }
     }
 }
 
-Classifiable::Classifiable(const Classifiable &unclassified, string label) : isClassified(true)
-{
+Classifiable::Classifiable(const Classifiable &unclassified, string label) : isClassified(true) {
     this->label = label;
     coordinates = unclassified.getCoordinates();
 }
 
-string Classifiable::getLable() const 
-{
+string Classifiable::getLable() const {
     return label;
 }
 
-void Classifiable::setLable(string l)
-{
+void Classifiable::setLable(string l) {
     this->label = l;
     this->isClassified = true;
 }
 
-vector<double> Classifiable::getCoordinates() const
-{
+vector<double> Classifiable::getCoordinates() const {
     return coordinates;
 }
 
-double Classifiable::getDistance() const
-{
+double Classifiable::getDistance() const {
     return distance;
 }
 
-void Classifiable::setDistance(double d)
-{
+void Classifiable::setDistance(double d) {
     distance = d;
 }
 
-vector<Classifiable> Classifiable::toVector(const vector<vector<string>> &data, bool isClassified)
-{
+vector<Classifiable> Classifiable::toVector(const vector<vector<string>> &data, bool isClassified) {
     vector<Classifiable> vOut;
-    for (const auto &v : data)
-    {
+    for (const auto &v : data) {
         vOut.push_back(Classifiable(v, isClassified));
     }
     return vOut;

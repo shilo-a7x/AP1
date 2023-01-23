@@ -35,7 +35,6 @@ int main(int argc, char *argv[]) {
         // get the info from the client and reply.
         while (true) {
             int clientSocket = server.accept();
-
         }
     }
 

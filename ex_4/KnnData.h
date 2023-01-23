@@ -5,8 +5,7 @@
 
 using namespace std;
 
-class KnnData
-{
+class KnnData {
 private:
     KNN *knn;
     vector<Classifiable> test;

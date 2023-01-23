@@ -12,5 +12,4 @@ public:
     string read() override;
 };
 
-
 #endif

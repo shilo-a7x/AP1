@@ -47,7 +47,7 @@ public:
      * @brief Set the classification
      *
      * @param label
-    */
+     */
     void setLable(string label);
     /**
      * @brief Get the coordinates of the classifiable object
