@@ -1,7 +1,7 @@
 #include "TCPServer.h"
 #include <stdexcept>
 
-TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK_STREAM, 0)), from() {
+TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK_STREAM, 0)) {
 
     // initialize the socket and check it.
     if (sockId < 0) {
@@ -27,12 +27,11 @@ TCPServer::TCPServer(in_addr_t ip, in_port_t port) : sockId(socket(AF_INET, SOCK
 
 int TCPServer::accept() {
     struct sockaddr_in client_sin;
-    unsigned int addr_len = sizof(client_sin);
-    int clientSock = ::accept(sockId, (struct sockaddr *)&client_sin, addr_len);
+    unsigned int addr_len = sizeof(client_sin);
+    int clientSock = ::accept(sockId, (struct sockaddr *)&client_sin, &addr_len);
     if (clientSock < 0) {
-        return -1;
+        error = 1;
     }
-    clientNum++;
     return clientSock;
 }
 
@@ -41,12 +40,4 @@ void TCPServer::close() {
 }
 int TCPServer::getError() {
     return error;
-}
-
-void TCPServer::disconnectClient() {
-    clientNum--;
-}
-
-int TCPServer::getClientNum() {
-    return clientNum;
 }

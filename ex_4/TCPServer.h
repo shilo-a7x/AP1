@@ -12,7 +12,7 @@ private:
     // private variables for initializing the socket and detecting errors.
     int sockId;
     int queueLen = 5;
-    int clientNum = 0;
+    int error = 0;
 
 public:
     /*
@@ -31,7 +31,4 @@ public:
     // check if there was an error along the way somewhere.
     int getError();
 
-    void disconnectClient();
-
-    int getClientNum();
 };
