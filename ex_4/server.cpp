@@ -1,15 +1,12 @@
-#include "Classifiable.h"
-#include "KNN.h"
-#include "Reader.h"
 #include "TCPServer.h"
+#include "SocketIO.h"
 #include <iostream>
 #include <sstream>
 #include <thread>
 
 using namespace std;
 
-// declaration.
-bool is_number(const string &s);
+void handleClient(int socket, TCPServer &server);
 
 /*
 The main function for lunching the server.
@@ -35,24 +32,34 @@ int main(int argc, char *argv[]) {
         // get the info from the client and reply.
         while (true) {
             int clientSocket = server.accept();
+            thread t(handleClient, clientSocket, server);
+            t.detach();
         }
     }
 
     // if there was a problem send an error massage and quit.
     catch (const exception &e) {
-        cout << "unable to run the server\n"
-             << e.what() << endl;
-        return 0;
+        cout << "unable to run the server\n" << e.what() << endl;
     }
     return 0;
 }
 
-/*
-return true if the string given represents a double and false otherwise.
-*/
-bool is_number(const string &s) {
-    long double ld;
-
-    // return true if the string given to the buffer is a long double and false if not.
-    return ((istringstream(s) >> ld >> ws).eof());
+void handleClient(int socket, TCPServer &server) {
+    SocketIO io(socekt);
+    KNN knn("AUC", 5);
+    KnnData knndata(&knn);
+    vector<Command *> commands;
+    UploadCommand c1(&io, &knndata);
+    ChangeSetsCommand c2(&io, &knndata);
+    ClassifyCommand cc(&c3, &knndata);
+    DisplayStringCommand c4(&io, &knndata);
+    DownloadResultsCommand c5(&io, &knndata);
+    commands.push_back(&c1);
+    commands.push_back(&c2);
+    commands.push_back(&c3);
+    commands.push_back(&c4);
+    commands.push_back(&c5);
+    CLI cli(&io, commands);
+    cli.run();
+    //server.disconnectClient();
 }
