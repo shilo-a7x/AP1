@@ -25,7 +25,4 @@ void DownloadResultsCommand::execute()
     msg << "> " << "TO <" << path << ">";
 
     this->getIO()->write(msg.str());
-
-    // Waiting for client to press enter.
-    this->getIO()->read();
 }
