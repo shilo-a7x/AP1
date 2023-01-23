@@ -1,6 +1,6 @@
 OBJS	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o \
-	TCPClient.o client.o StandardMain.o KnnData.o ChangeSetsCommand.o UploadCommand.o \
-	DownloadResultsCommand.o DisplayStringCommand.o ClassifyCommand.o CLI.o StandardIO.o
+	TCPClient.o client.o StandardMain.o KnnData.o ChangeSetsCommand.o UploadCommand.o DownloadResultsCommand.o \
+	DisplayStringCommand.o ClassifyCommand.o CLI.o StandardIO.o SocketIO.o
 OUT	= server.out client.out test.out
 
 OBJS0	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o KnnData.o ChangeSetsCommand.o \
