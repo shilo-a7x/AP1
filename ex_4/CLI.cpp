@@ -21,6 +21,7 @@ void CLI::run() {
             continue;
         }
         if (optionNumber == 7) {
+            io->write("EXIT");
             break;
         }
         if (optionNumber < 0 || optionNumber > 4) {

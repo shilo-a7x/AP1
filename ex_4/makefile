@@ -3,8 +3,11 @@ OBJS	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPSer
 	DownloadResultsCommand.o DisplayStringCommand.o ClassifyCommand.o CLI.o StandardIO.o
 OUT	= server.out client.out test.out
 
-OBJS0	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o
-SOURCE0	= Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Reader.cpp TCPServer.cpp server.cpp
+OBJS0	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o KnnData.o ChangeSetsCommand.o \
+	UploadCommand.o DownloadResultsCommand.o DisplayStringCommand.o ClassifyCommand.o CLI.o SocketIO.o
+SOURCE0	= server.cpp Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Reader.cpp \
+	KnnData.cpp ChangeSetsCommand.cpp UploadCommand.cpp DownloadResultsCommand.cpp DisplayStringCommand.cpp \
+	ClassifyCommand.cpp CLI.cpp TCPServer.cpp SocketIO.cpp
 HEADER0	= Algorithm.h Classifiable.h Distance.h Initializer.h KNN.h Reader.h TCPServer.h
 OUT0 = server.out
 
