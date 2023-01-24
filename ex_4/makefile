@@ -22,10 +22,10 @@ LFLAGS	 = -pthread
 
 all: server client
 
-server: $(OBJS0) $(LFLAGS)
+server: $(OBJS0)
 	$(CC) -g $(OBJS0) -o $(OUT0) $(LFLAGS)
 
-client: $(OBJS1) $(LFLAGS)
+client: $(OBJS1)
 	$(CC) -g $(OBJS1) -o $(OUT1) $(LFLAGS)
 
 Algorithm.o: Algorithm.cpp
