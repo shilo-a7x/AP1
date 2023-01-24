@@ -1,7 +1,7 @@
 OBJS	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o \
 	TCPClient.o client.o StandardMain.o KnnData.o ChangeSetsCommand.o UploadCommand.o DownloadResultsCommand.o \
 	DisplayStringCommand.o ClassifyCommand.o CLI.o StandardIO.o SocketIO.o
-OUT	= server.out client.out test.out
+OUT	= server.out client.out
 
 OBJS0	= Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o TCPServer.o server.o KnnData.o ChangeSetsCommand.o \
 	UploadCommand.o DownloadResultsCommand.o DisplayStringCommand.o ClassifyCommand.o CLI.o SocketIO.o
@@ -16,17 +16,9 @@ SOURCE1	= TCPClient.cpp client.cpp Reader.cpp SocketIO.cpp
 HEADER1 = TCPClient.h
 OUT1 = client.out
 
-OBJS2 = StandardMain.o Algorithm.o Classifiable.o Distance.o Initializer.o KNN.o Reader.o KnnData.o ChangeSetsCommand.o \
-	UploadCommand.o DownloadResultsCommand.o DisplayStringCommand.o ClassifyCommand.o CLI.o StandardIO.o
-SOURCE2 = StandardMain.cpp Algorithm.cpp Classifiable.cpp Distance.cpp Initializer.cpp KNN.cpp Reader.cpp \
-	KnnData.cpp ChangeSetsCommand.cpp UploadCommand.cpp DownloadResultsCommand.cpp DisplayStringCommand.cpp \
-	ClassifyCommand.cpp CLI.cpp StandardIO.cpp
-OUT2 = test.out 
-
-
 CC	 = g++
 FLAGS	 = -g -c
-LFLAGS	 = -lpthread
+LFLAGS	 = -pthread
 
 all: server client
 
@@ -35,9 +27,6 @@ server: $(OBJS0) $(LFLAGS)
 
 client: $(OBJS1) $(LFLAGS)
 	$(CC) -g $(OBJS1) -o $(OUT1) $(LFLAGS)
-
-test: $(OBJS2) $(LFLAGS)
-	$(CC) -g $(OBJS2) -o $(OUT2) $(LFLAGS)
 
 Algorithm.o: Algorithm.cpp
 	$(CC) $(FLAGS) Algorithm.cpp -std=c++11
@@ -93,8 +82,8 @@ StandardIO.o: StandardIO.cpp
 UploadCommand.o: UploadCommand.cpp
 	$(CC) $(FLAGS) UploadCommand.cpp -std=c++11
 
-StandardMain.o: StandardMain.cpp
-	$(CC) $(FLAGS) StandardMain.cpp -std=c++11
+SocketIO.o: SocketIO.cpp
+	$(CC) $(FLAGS) SocketIO.cpp -std=c++11
 
 clean:
 	rm -f $(OBJS) $(OUT)
