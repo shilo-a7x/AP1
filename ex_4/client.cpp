@@ -37,12 +37,13 @@ int main(int argc, char *argv[])
         {
             string menu = sio.read();
             cout << menu << endl;
-            string choice, input, input1, stringFile;
+            string choice, input, input1, stringFile, msg;
             int response, i;
             getline(cin, choice);
             try
             {
-                if (choice.empty()){
+                if (choice.empty())
+                {
                     throw runtime_error("error");
                 }
                 response = stoi(choice);
@@ -134,10 +135,15 @@ int main(int argc, char *argv[])
                 exit(0);
             }
             break;
-
             default:
-                cout << "invalid input" << endl;
-                break;
+            {
+                sio.write("ERROR");
+                msg = sio.read();
+                cout << msg << endl;
+                sio.write("OK");
+                cout << "send ok" << endl;
+                continue;
+            }
             }
         }
     }
