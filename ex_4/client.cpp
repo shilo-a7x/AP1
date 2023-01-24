@@ -37,11 +37,73 @@ int main(int argc, char *argv[])
         // receive input from user infinitely
         while (true)
         {
-
             string answer = recieve(sio);
             send(answer, sio);
+        }
+    }
+    catch (const exception &e)
+    {
+        cout << "Unable to run the client!\n"
+             << e.what() << endl;
+        return 0;
+    }
+    return 0;
+}
 
-            switch (response)
+// Check if a string is a directory of a file
+bool isFile(const string &name)
+{
+    struct stat buffer;
+    return ((stat(name.c_str(), &buffer) == 0) and (buffer.st_mode & S_IFREG));
+}
+
+string recieve(SocketIO &sio)
+{
+    string s = sio.read();
+    cout << s << endl;
+    return s;
+}
+
+void send(string ans, SocketIO &sio)
+{
+    string input = "";
+    getline(cin, input);
+    bool isCorrect = checkInput(input);
+}
+
+bool checkInput(string response)
+{
+    if (response.empty())
+    {
+        return false;
+    }
+    try
+    {
+        response = stoi(choice);
+        if (response != 8)
+        {
+            if (response < 1 || response > 5)
+            {
+                throw runtime_error("not in range");
+            }
+        }
+    }
+    catch (const exception &e)
+    {
+       return false;
+    }
+    return true;
+}
+
+
+
+
+
+
+
+
+
+switch (response)
             {
             case 1:
             {
@@ -133,60 +195,3 @@ int main(int argc, char *argv[])
                 continue;
             }
             }
-        }
-    }
-    catch (const exception &e)
-    {
-        cout << "Unable to run the client!\n"
-             << e.what() << endl;
-        return 0;
-    }
-    return 0;
-}
-
-// Check if a string is a directory of a file
-bool isFile(const string &name)
-{
-    struct stat buffer;
-    return ((stat(name.c_str(), &buffer) == 0) and (buffer.st_mode & S_IFREG));
-}
-
-string recieve(SocketIO &sio)
-{
-    string s = sio.read();
-    cout << s << endl;
-    return s;
-}
-
-void send(string ans, SocketIO &sio)
-{
-    string input = "";
-    getline(cin, input);
-    bool isCorrect = checkInput(input);
-}
-
-bool checkInput(string input)
-{
-    if (choice.empty())
-    {
-        return false;
-    }
-    try
-    {
-        response = stoi(choice);
-        if (response == 8)
-        {
-            client.close();
-            exit(0);
-        }
-        if (response < 1 || response > 5)
-        {
-            throw runtime_error("not in range");
-        }
-    }
-    catch (const exception &e)
-            {
-                cout << "invalid input" << endl;
-                continue;
-            }
-}

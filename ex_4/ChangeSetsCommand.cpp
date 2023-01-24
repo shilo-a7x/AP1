@@ -56,35 +56,3 @@ void ChangeSetsCommand::execute() {
 }
 
 
-// string menu = sio.read();
-//             cout << menu << endl;
-//             string choice = "", input = "";
-//             int response, i;
-//             getline(cin, choice);
-//             if (choice.empty())
-//             {
-//                 sio.write("ERROR");
-//                 choice = "ERROR";
-//             }
-//             else
-//             {
-//                 sio.write(choice);
-//             }
-//             try
-//             {
-//                 response = stoi(choice);
-//                 if (response == 8)
-//                 {
-//                     client.close();
-//                     exit(0);
-//                 }
-//                 if (response < 1 || response > 5)
-//                 {
-//                     throw runtime_error("not in range");
-//                 }
-//             }
-//             catch (const exception &e)
-//             {
-//                 cout << "invalid input" << endl;
-//                 continue;
-//             }
