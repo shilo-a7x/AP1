@@ -12,10 +12,7 @@
 using namespace std;
 
 // declaration.
-void handleMessage(const std::string &msg, TCPClient *client);
-void receiving(TCPClient *client, SocketIO *sio);
 inline bool isFile(const std::string &name);
-void writeFile(const string &path, const string &msg);
 
 /*
 The main function for lunching the client.
@@ -33,18 +30,84 @@ int main(int argc, char *argv[])
         int port = atoi(argv[2]);
         TCPClient client(inet_addr(ip), htons(port));
         SocketIO sio(client.getSocket());
-        thread thread(receiving, &client, &sio);
 
         // receive input from user infinitely
         while (true)
         {
-            string response;
+            string menu = sio.read();
+            cout << menu << endl;
+            string response, input, stringFile;
             getline(cin, response);
-            if (isFile(response))
-            {
-                response = Reader::readToString(response);
-            }
             sio.write(response);
+            switch (response)
+            {
+            case "1":
+                int i;
+                for (i = 0; i < 2 i++)
+                {
+                    cout << sio.read() << endl;
+                    getline(cin, input);
+                    if (!isFile(input))
+                    {
+                        sio.write("");
+                        cout << sio.read() << endl;
+                        break;
+                    }
+                    try
+                    {
+                        sio.write(Reader::readToString(input));
+                    }
+                    catch
+                    {
+                        sio.write("");
+                        cout << "failed to upload file" << endl;
+                        break;
+                    }
+                }
+                break;
+            case "2":
+                cout << sio.read() << endl;
+                getline(cin, input);
+                sio.write(input);
+                input = sio.read();
+                if (input == "")
+                {
+                    break;
+                }
+                cout << sio.read() << endl;
+                break;
+            case "3":
+                cout << sio.read() << endl;
+                break;
+            case "4":
+                cout << sio.read() << endl;
+                getline(cin, input);
+                sio.write(input);
+                break;
+            case "5":
+                cout << sio.read() << endl;
+                sio.write("ok");
+                stringFile = sio.read();
+                if (stringFile == "")
+                {
+                    break;
+                }
+                getline(cin, input);
+                if (!isFile(input))
+                {
+                    sio.write("");
+                    cout << sio.read() << endl;
+                    break;
+                }
+                ofstream fout(input);
+                fout << stringFile;
+                break;
+            case "8":
+                client.close();
+                exit(0);
+            default:
+                break;
+            }
         }
     }
     catch (const exception &e)
@@ -54,44 +117,6 @@ int main(int argc, char *argv[])
         return 0;
     }
     return 0;
-}
-
-void receiving(TCPClient *client, SocketIO *sio)
-{
-    while (true)
-    {
-        const string &msg = sio->read();
-        handleMessage(msg, client);
-    }
-}
-
-void handleMessage(const string &msg, TCPClient *client)
-{
-    if (msg == "EXIT")
-    {
-        client->close();
-        exit(0);
-    }
-    // Check if a message should be printed or saved to a file
-    regex rgx("SAVE <((.|\\n)+)> TO <(.*)>");
-    smatch matches;
-
-    if (regex_search(msg, matches, rgx))
-    {
-        thread writer(writeFile, matches[3].str(), matches[1].str());
-        writer.detach();
-    }
-    else
-    {
-        cout << msg << endl;
-    }
-}
-
-// Write to a csv file
-void writeFile(const string &path, const string &msg)
-{
-    ofstream fout(path);
-    fout << msg;
 }
 
 // Check if a string is a directory of a file
