@@ -1,5 +1,6 @@
 #include "ChangeSetsCommand.h"
 #include <stdexcept>
+#include <string>
 
 void ChangeSetsCommand::execute() {
     // write the current settings on the client's screen.
@@ -20,30 +21,33 @@ void ChangeSetsCommand::execute() {
 
     // use a flag in order to check if the k is wrong.
     int k, flag = 0;
+    string invalid = "";
     try {
         k = stoi(param[0]);
     } catch (const invalid_argument &exception) {
-        this->getIO()->write("invalid value for K");
+        invalid.append("invalid value for K");
         flag = 1;
     }
 
     // make sure k is positive.
     if (k < 1 && !flag) {
-        this->getIO()->write("invalid value for K");
+        invalid.append("invalid value for K");
         flag = 1;
     }
 
     // check if the metric is valid.
     Distance dist(param[1]);
     if (!dist.isMetricValid()) {
-        this->getIO()->write("invalid value for metric");
+        invalid.append("invalid value for metric");
         flag = 1;
     }
     // if k was bad don't change the settings.
     if (flag) {
+        this->getIO()->write(invalid);
         return;
     } else {
-        // if everything is ok, change the settings.
+        // if everything is ok, change the settings and notify the client.
+        this->getIO()->write("");
         this->getData()->getKnn()->setKNN(param[1], k);
     }
 }

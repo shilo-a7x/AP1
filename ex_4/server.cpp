@@ -36,12 +36,15 @@ int main(int argc, char *argv[]) {
 
         // if there was an error when starting the server the error flag will be turned on.
         if (server.getError()) {
-            throw runtime_error("failed to initialize socket\n");
+            throw runtime_error("failed to initialize socket");
         }
 
         // get the info from the client and reply.
         while (true) {
             int clientSocket = server.accept();
+            if (server.getError()) {
+                throw runtime_error("Error in accepting client, Bye!");
+            }
             thread t(handleClient, clientSocket);
             t.detach();
         }

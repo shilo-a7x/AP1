@@ -17,7 +17,7 @@ void UploadCommand::execute() {
     this->getIO()->write("Please upload your local test CSV file.");
     input = this->getIO()->read();
     if (input.empty()) {
-        this->getIO()->write("invalid file");
+        this->getIO()->write("invalid input");
         return;
     }
     try {

@@ -1,4 +1,5 @@
 #include "Command.h"
+#include <sstream>
 
 #ifndef DISPLAYSTRINGCOMMAND_H
 #define DISPLAYSTRINGCOMMAND_H
