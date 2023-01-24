@@ -13,7 +13,7 @@ SocketIO::~SocketIO() {
 string SocketIO::read() {
     char buffer[BUFFER_SIZE];
     int read_bytes;
-    string msg;
+    string msg = "";
     do {
         memset(buffer, 0, BUFFER_SIZE);
         read_bytes = recv(socket, buffer, BUFFER_SIZE, 0);
