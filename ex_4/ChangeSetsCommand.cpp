@@ -38,6 +38,9 @@ void ChangeSetsCommand::execute() {
     // check if the metric is valid.
     Distance dist(param[1]);
     if (!dist.isMetricValid()) {
+        if (flag){
+            invalid.append("\n");
+        }
         invalid.append("invalid value for metric");
         flag = 1;
     }
@@ -51,3 +54,37 @@ void ChangeSetsCommand::execute() {
         this->getData()->getKnn()->setKNN(param[1], k);
     }
 }
+
+
+// string menu = sio.read();
+//             cout << menu << endl;
+//             string choice = "", input = "";
+//             int response, i;
+//             getline(cin, choice);
+//             if (choice.empty())
+//             {
+//                 sio.write("ERROR");
+//                 choice = "ERROR";
+//             }
+//             else
+//             {
+//                 sio.write(choice);
+//             }
+//             try
+//             {
+//                 response = stoi(choice);
+//                 if (response == 8)
+//                 {
+//                     client.close();
+//                     exit(0);
+//                 }
+//                 if (response < 1 || response > 5)
+//                 {
+//                     throw runtime_error("not in range");
+//                 }
+//             }
+//             catch (const exception &e)
+//             {
+//                 cout << "invalid input" << endl;
+//                 continue;
+//             }

@@ -24,19 +24,14 @@ void CLI::run()
         }
         catch (const exception &e)
         {
-            io->write("invalid input");
-            io->read();
             continue;
         }
         if (optionNumber == 7)
         {
-            io->write("EXIT");
             break;
         }
         if (optionNumber < 0 || optionNumber > 4)
         {
-            io->write("invalid input");
-            io->read();
             continue;
         }
         commands[optionNumber]->execute();

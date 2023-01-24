@@ -14,6 +14,8 @@ using namespace std;
 
 // declaration.
 inline bool isFile(const std::string &name);
+string recieve(SocketIO &sio);
+void send(string ans, SocketIO &sio);
 
 /*
 The main function for lunching the client.
@@ -35,27 +37,10 @@ int main(int argc, char *argv[])
         // receive input from user infinitely
         while (true)
         {
-            string menu = sio.read();
-            cout << menu << endl;
-            string choice, input, input1, stringFile, msg;
-            int response, i;
-            getline(cin, choice);
-            try
-            {
-                if (choice.empty())
-                {
-                    throw runtime_error("error");
-                }
-                response = stoi(choice);
-            }
-            catch (const exception &e)
-            {
-                sio.write("ERROR");
-                cout << sio.read() << endl;
-                sio.write("OK");
-                continue;
-            }
-            sio.write(choice);
+
+            string answer = recieve(sio);
+            send(answer, sio);
+
             switch (response)
             {
             case 1:
@@ -87,10 +72,15 @@ int main(int argc, char *argv[])
             case 2:
             {
                 cout << sio.read() << endl;
+                input = "";
                 getline(cin, input);
                 sio.write(input);
-                input1 = sio.read();
-                if (input1 == "")
+                if (choice.empty())
+                {
+                    break;
+                }
+                string input1 = sio.read();
+                if (input1 == "ok")
                 {
                     break;
                 }
@@ -113,8 +103,8 @@ int main(int argc, char *argv[])
             {
                 cout << sio.read() << endl;
                 sio.write("ok");
-                stringFile = sio.read();
-                if (stringFile == "")
+                input = sio.read();
+                if (input == "")
                 {
                     break;
                 }
@@ -126,7 +116,7 @@ int main(int argc, char *argv[])
                     break;
                 }
                 ofstream fout(input);
-                fout << stringFile;
+                fout << input;
             }
             break;
             case 8:
@@ -138,10 +128,8 @@ int main(int argc, char *argv[])
             default:
             {
                 sio.write("ERROR");
-                msg = sio.read();
-                cout << msg << endl;
+                cout << sio.read() << endl;
                 sio.write("OK");
-                cout << "send ok" << endl;
                 continue;
             }
             }
@@ -161,4 +149,44 @@ bool isFile(const string &name)
 {
     struct stat buffer;
     return ((stat(name.c_str(), &buffer) == 0) and (buffer.st_mode & S_IFREG));
+}
+
+string recieve(SocketIO &sio)
+{
+    string s = sio.read();
+    cout << s << endl;
+    return s;
+}
+
+void send(string ans, SocketIO &sio)
+{
+    string input = "";
+    getline(cin, input);
+    bool isCorrect = checkInput(input);
+}
+
+bool checkInput(string input)
+{
+    if (choice.empty())
+    {
+        return false;
+    }
+    try
+    {
+        response = stoi(choice);
+        if (response == 8)
+        {
+            client.close();
+            exit(0);
+        }
+        if (response < 1 || response > 5)
+        {
+            throw runtime_error("not in range");
+        }
+    }
+    catch (const exception &e)
+            {
+                cout << "invalid input" << endl;
+                continue;
+            }
 }
