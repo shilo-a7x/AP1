@@ -47,7 +47,7 @@ void ChangeSetsCommand::execute() {
         return;
     } else {
         // if everything is ok, change the settings and notify the client.
-        this->getIO()->write("");
+        this->getIO()->write("OK");
         this->getData()->getKnn()->setKNN(param[1], k);
     }
 }

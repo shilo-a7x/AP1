@@ -37,23 +37,28 @@ int main(int argc, char *argv[])
         {
             string menu = sio.read();
             cout << menu << endl;
-            string choice, input, stringFile;
-            int response;
+            string choice, input, input1, stringFile;
+            int response, i;
             getline(cin, choice);
             try
             {
+                if (choice.empty()){
+                    throw runtime_error("error");
+                }
                 response = stoi(choice);
             }
             catch (const exception &e)
             {
-                cout << "invalid input" << endl;
+                sio.write("ERROR");
+                cout << sio.read() << endl;
+                sio.write("OK");
                 continue;
             }
             sio.write(choice);
             switch (response)
             {
             case 1:
-                int i;
+            {
                 for (i = 0; i < 2; i++)
                 {
                     cout << sio.read() << endl;
@@ -76,27 +81,35 @@ int main(int argc, char *argv[])
                         break;
                     }
                 }
-                break;
+            }
+            break;
             case 2:
+            {
                 cout << sio.read() << endl;
                 getline(cin, input);
                 sio.write(input);
-                input = sio.read();
-                if (input == "")
+                input1 = sio.read();
+                if (input1 == "")
                 {
                     break;
                 }
                 cout << sio.read() << endl;
-                break;
+            }
+            break;
             case 3:
+            {
                 cout << sio.read() << endl;
-                break;
+            }
+            break;
             case 4:
+            {
                 cout << sio.read() << endl;
                 getline(cin, input);
                 sio.write(input);
-                break;
+            }
+            break;
             case 5:
+            {
                 cout << sio.read() << endl;
                 sio.write("ok");
                 stringFile = sio.read();
@@ -113,10 +126,15 @@ int main(int argc, char *argv[])
                 }
                 ofstream fout(input);
                 fout << stringFile;
-                break;
+            }
+            break;
             case 8:
+            {
                 client.close();
                 exit(0);
+            }
+            break;
+
             default:
                 cout << "invalid input" << endl;
                 break;
