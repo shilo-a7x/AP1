@@ -44,6 +44,11 @@ int main(int argc, char *argv[])
             {
                 response = stoi(choice);
             }
+            catch (const exception &e)
+            {
+                cout << "invalid input" << endl;
+                continue;
+            }
             sio.write(choice);
             switch (response)
             {
@@ -63,10 +68,11 @@ int main(int argc, char *argv[])
                     {
                         sio.write(Reader::readToString(input));
                     }
-                    catch(const exception &e)
+                    catch (const exception &e)
                     {
                         sio.write("");
-                        cout << "failed to upload file\n" << e.what() << endl;
+                        cout << "failed to upload file\n"
+                             << e.what() << endl;
                         break;
                     }
                 }
