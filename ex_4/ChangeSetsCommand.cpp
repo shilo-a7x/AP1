@@ -1,7 +1,6 @@
 #include "ChangeSetsCommand.h"
 #include <stdexcept>
 #include <string>
-#include <iostream>
 
 void ChangeSetsCommand::execute()
 {
@@ -20,7 +19,8 @@ void ChangeSetsCommand::execute()
     vector<string> param = Reader::split(input, ' ');
     if (param.size() != 2)
     {
-        s.append("invalid value for K\ninvalid value for metric");
+        s.append("invalid value for K\n");
+        s.append("invalid value for metric");
         this->getIO()->write(s);
         this->getIO()->read();
         return;

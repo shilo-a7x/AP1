@@ -91,17 +91,17 @@ int clientSend(string s, SocketIO &sio)
     string input, path;
     getline(cin, input);
 
-    if (input.empty() || (s.find("Welcome to the KNN Classifier") != string::npos &&input.length() != 1))
+    if (input.empty() || (s.find("Welcome to the KNN Classifier") != string::npos && input.length() != 1))
     {
         input = "ENTER";
     }
     sio.write(input);
-    if (input == "1")
+    if (input == "1" && s.find("Welcome to the KNN Classifier") != string::npos)
     {
         uploadData(sio);
         return 0;
     }
-    if (input == "5")
+    if (input == "5" && s.find("Welcome to the KNN Classifier") != string::npos)
     {
         // downloadData();
         // return 0;
