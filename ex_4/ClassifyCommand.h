@@ -5,7 +5,8 @@
 
 using namespace std;
 
-class ClassifyCommand : public Command {
+class ClassifyCommand : public Command
+{
 public:
     void execute() override;
 

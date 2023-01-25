@@ -6,7 +6,8 @@
 
 using namespace std;
 
-class DisplayStringCommand : public Command {
+class DisplayStringCommand : public Command
+{
 public:
     void execute() override;
 

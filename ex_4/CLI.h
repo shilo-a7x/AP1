@@ -11,7 +11,7 @@ private:
     DefaultIO *io;
     vector<Command *> commands;
 
-    void printMenu();
+    void printMenu(string);
 
 public:
     CLI(DefaultIO *io, vector<Command *> commands) : io(io), commands(commands) {}

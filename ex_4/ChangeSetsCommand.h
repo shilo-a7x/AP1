@@ -11,7 +11,8 @@ header for the ChangeSetsCommand class.
 
 using namespace std;
 
-class ChangeSetsCommand : public Command {
+class ChangeSetsCommand : public Command
+{
 public:
     void execute() override;
 
