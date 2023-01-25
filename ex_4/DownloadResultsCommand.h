@@ -6,7 +6,8 @@
 
 using namespace std;
 
-class DownloadResultsCommand : public Command {
+class DownloadResultsCommand : public Command
+{
 public:
     void execute() override;
 

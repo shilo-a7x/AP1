@@ -14,8 +14,10 @@ using namespace std;
 
 // declaration.
 inline bool isFile(const std::string &name);
-string recieve(SocketIO &sio);
-void send(string ans, SocketIO &sio);
+string clientRecieve(SocketIO &sio);
+int clientSend(string ans, SocketIO &sio);
+void uploadData(SocketIO &sio);
+// void downloadData(SocketIO &sio);
 
 /*
 The main function for lunching the client.
@@ -37,8 +39,12 @@ int main(int argc, char *argv[])
         // receive input from user infinitely
         while (true)
         {
-            string answer = recieve(sio);
-            send(answer, sio);
+            string answer = clientRecieve(sio);
+            if (clientSend(answer, sio))
+            {
+                client.close();
+                exit(0);
+            }
         }
     }
     catch (const exception &e)
@@ -57,141 +63,172 @@ bool isFile(const string &name)
     return ((stat(name.c_str(), &buffer) == 0) and (buffer.st_mode & S_IFREG));
 }
 
-string recieve(SocketIO &sio)
+string clientRecieve(SocketIO &sio)
 {
     string s = sio.read();
+    if (s.find("EXIT") != string::npos)
+    {
+        return s;
+    }
     cout << s << endl;
+    if (s.find("invalid value") != string::npos || s.find("please upload data") != string::npos || s.find("classifying data complete") != string::npos || s.find("please classify the data") != string::npos)
+    {
+        sio.write("space");
+    }
     return s;
 }
 
-void send(string ans, SocketIO &sio)
+int clientSend(string s, SocketIO &sio)
 {
-    string input = "";
+    if (s.find("EXIT") != string::npos)
+    {
+        return 1;
+    }
+    if (s.find("invalid value") != string::npos || s.find("please upload data") != string::npos || s.find("classifying data complete") != string::npos || s.find("please classify the data") != string::npos)
+    {
+        return 0;
+    }
+    string input, path;
     getline(cin, input);
-    bool isCorrect = checkInput(input);
+    if (input.empty())
+    {
+        input = "ENTER";
+    }
+    sio.write(input);
+    if (input == "1")
+    {
+        uploadData(sio);
+        return 0;
+    }
+    if (input == "5")
+    {
+        // downloadData();
+        // return 0;
+        cout << "got 5" << endl;
+        input = "ENTER";
+    }
+    return 0;
 }
 
-bool checkInput(string response)
+void uploadData(SocketIO &sio)
 {
-    if (response.empty())
+    int i;
+    for (i = 0; i < 2; i++)
     {
-        return false;
-    }
-    try
-    {
-        response = stoi(choice);
-        if (response != 8)
+        string input, path;
+        cout << sio.read() << endl;
+        getline(cin, path);
+        if (!isFile(path) || path.empty())
         {
-            if (response < 1 || response > 5)
-            {
-                throw runtime_error("not in range");
-            }
+            cout << "invalid input" << endl;
+            sio.write("ERROR");
+            return;
         }
+        try
+        {
+            sio.write(Reader::readToString(path));
+        }
+        catch (const exception &e)
+        {
+            cout << "failed to upload file\n"
+                 << e.what() << endl;
+        }
+        cout << sio.read() << endl;
+        sio.write("OK");
     }
-    catch (const exception &e)
-    {
-       return false;
-    }
-    return true;
 }
 
+// void downloadData(SocketIO &sio)
 
-
-
-
-
-
-
-
-switch (response)
-            {
-            case 1:
-            {
-                for (i = 0; i < 2; i++)
-                {
-                    cout << sio.read() << endl;
-                    getline(cin, input);
-                    if (!isFile(input))
-                    {
-                        sio.write("");
-                        cout << sio.read() << endl;
-                        break;
-                    }
-                    try
-                    {
-                        sio.write(Reader::readToString(input));
-                    }
-                    catch (const exception &e)
-                    {
-                        sio.write("");
-                        cout << "failed to upload file\n"
-                             << e.what() << endl;
-                        break;
-                    }
-                }
-            }
-            break;
-            case 2:
-            {
-                cout << sio.read() << endl;
-                input = "";
-                getline(cin, input);
-                sio.write(input);
-                if (choice.empty())
-                {
-                    break;
-                }
-                string input1 = sio.read();
-                if (input1 == "ok")
-                {
-                    break;
-                }
-                cout << sio.read() << endl;
-            }
-            break;
-            case 3:
-            {
-                cout << sio.read() << endl;
-            }
-            break;
-            case 4:
-            {
-                cout << sio.read() << endl;
-                getline(cin, input);
-                sio.write(input);
-            }
-            break;
-            case 5:
-            {
-                cout << sio.read() << endl;
-                sio.write("ok");
-                input = sio.read();
-                if (input == "")
-                {
-                    break;
-                }
-                getline(cin, input);
-                if (!isFile(input))
-                {
-                    sio.write("");
-                    cout << sio.read() << endl;
-                    break;
-                }
-                ofstream fout(input);
-                fout << input;
-            }
-            break;
-            case 8:
-            {
-                client.close();
-                exit(0);
-            }
-            break;
-            default:
-            {
-                sio.write("ERROR");
-                cout << sio.read() << endl;
-                sio.write("OK");
-                continue;
-            }
-            }
+// switch (response)
+// {
+// case 1:
+// {
+//     for (i = 0; i < 2; i++)
+//     {
+// cout << sio.read() << endl;
+// getline(cin, input);
+// if (!isFile(input))
+// {
+//     sio.write("");
+//     cout << sio.read() << endl;
+//     break;
+// }
+// try
+// {
+//     sio.write(Reader::readToString(input));
+// }
+// catch (const exception &e)
+// {
+//     sio.write("");
+//     cout << "failed to upload file\n"
+//          << e.what() << endl;
+//     break;
+// }
+//     }
+// }
+// break;
+// case 2:
+// {
+//     cout << sio.read() << endl;
+//     input = "";
+//     getline(cin, input);
+//     sio.write(input);
+//     if (choice.empty())
+//     {
+//         break;
+//     }
+//     string input1 = sio.read();
+//     if (input1 == "ok")
+//     {
+//         break;
+//     }
+//     cout << sio.read() << endl;
+// }
+// break;
+// case 3:
+// {
+//     cout << sio.read() << endl;
+// }
+// break;
+// case 4:
+// {
+//     cout << sio.read() << endl;
+//     getline(cin, input);
+//     sio.write(input);
+// }
+// break;
+// case 5:
+// {
+//     cout << sio.read() << endl;
+//     sio.write("ok");
+//     input = sio.read();
+//     if (input == "")
+//     {
+//         break;
+//     }
+//     getline(cin, input);
+//     if (!isFile(input))
+//     {
+//         sio.write("");
+//         cout << sio.read() << endl;
+//         break;
+//     }
+//     ofstream fout(input);
+//     fout << input;
+// }
+// break;
+// case 8:
+// {
+//     client.close();
+//     exit(0);
+// }
+// break;
+// default:
+// {
+//     sio.write("ERROR");
+//     cout << sio.read() << endl;
+//     sio.write("OK");
+//     continue;
+// }
+// }
