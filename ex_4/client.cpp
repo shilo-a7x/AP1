@@ -4,8 +4,9 @@
 #include <arpa/inet.h>
 #include <fstream>
 #include <iostream>
-#include <regex>
 #include <sstream>
+#include <fstream>
+#include <thread>
 #include <stdexcept>
 #include <sys/stat.h>
 #include <thread>
@@ -18,6 +19,7 @@ string clientRecieve(SocketIO &sio);
 int clientSend(string ans, SocketIO &sio);
 void uploadData(SocketIO &sio);
 void downloadData(SocketIO &sio);
+void downloadFile(string data, string path);
 
 /*
 The main function for lunching the client.
@@ -97,7 +99,7 @@ int clientSend(string s, SocketIO &sio)
     }
     if (input == "5" && s.find("Welcome to the KNN Classifier") != string::npos)
     {
-        downloadData();
+        downloadData(sio);
         return 0;
     }
     return 0;
@@ -135,15 +137,27 @@ void downloadData(SocketIO &sio)
 {
     string input, path;
     input = sio.read();
-    cout << input << endl;
-    
+    if (input.find("please upload data") != string::npos || input.find("please classify the data") != string::npos)
+    {
+        cout << input << endl;
+        sio.write("ERROR");
+        return;
+    }
+    sio.write("space");
     getline(cin, path);
     if (!isFile(path) || path.empty())
     {
         cout << "invalid input" << endl;
-        sio.write("ERROR");
         return;
     }
+    thread t(downloadFile, input, path);
+    t.detach();
+}
+
+void downloadFile(string data, string path)
+{
+    ofstream fout(path);
+    fout << data;
 }
 
 // switch (response)

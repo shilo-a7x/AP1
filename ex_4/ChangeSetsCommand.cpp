@@ -12,6 +12,8 @@ void ChangeSetsCommand::execute()
     string input = this->getIO()->read();
     if (input.empty())
     {
+        this->getIO()->write(s);
+        this->getIO()->read();
         return;
     }
 
