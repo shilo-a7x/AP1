@@ -10,10 +10,8 @@ void ChangeSetsCommand::execute()
     string s = "";
     // read the K and the metric from the client.
     string input = this->getIO()->read();
-    if (input.empty())
+    if (input == "ENTER")
     {
-        this->getIO()->write(s);
-        this->getIO()->read();
         return;
     }
 

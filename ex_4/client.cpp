@@ -83,7 +83,7 @@ int clientSend(string s, SocketIO &sio)
     {
         return 0;
     }
-    string input, path;
+    string input = "";
     getline(cin, input);
 
     if (input.empty() || (s.find("Welcome to the KNN Classifier") != string::npos && input.length() != 1))
