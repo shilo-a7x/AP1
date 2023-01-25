@@ -2,7 +2,6 @@
 #include "SocketIO.h"
 #include "TCPClient.h"
 #include <arpa/inet.h>
-#include <fstream>
 #include <iostream>
 #include <sstream>
 #include <fstream>
