@@ -17,7 +17,7 @@ inline bool isFile(const std::string &name);
 string clientRecieve(SocketIO &sio);
 int clientSend(string ans, SocketIO &sio);
 void uploadData(SocketIO &sio);
-// void downloadData(SocketIO &sio);
+void downloadData(SocketIO &sio);
 
 /*
 The main function for lunching the client.
@@ -84,22 +84,21 @@ int clientSend(string s, SocketIO &sio)
     }
     string input, path;
     getline(cin, input);
-    if (input.empty())
+
+    if (input.empty() || (s.find("Welcome to the KNN Classifier") != string::npos && input.length() != 1))
     {
         input = "ENTER";
     }
     sio.write(input);
-    if (input == "1")
+    if (input == "1" && s.find("Welcome to the KNN Classifier") != string::npos)
     {
         uploadData(sio);
         return 0;
     }
-    if (input == "5")
+    if (input == "5" && s.find("Welcome to the KNN Classifier") != string::npos)
     {
-        // downloadData();
-        // return 0;
-        cout << "got 5" << endl;
-        input = "ENTER";
+        downloadData();
+        return 0;
     }
     return 0;
 }
@@ -109,7 +108,7 @@ void uploadData(SocketIO &sio)
     int i;
     for (i = 0; i < 2; i++)
     {
-        string input, path;
+        string path;
         cout << sio.read() << endl;
         getline(cin, path);
         if (!isFile(path) || path.empty())
@@ -132,7 +131,20 @@ void uploadData(SocketIO &sio)
     }
 }
 
-// void downloadData(SocketIO &sio)
+void downloadData(SocketIO &sio)
+{
+    string input, path;
+    input = sio.read();
+    cout << input << endl;
+    
+    getline(cin, path);
+    if (!isFile(path) || path.empty())
+    {
+        cout << "invalid input" << endl;
+        sio.write("ERROR");
+        return;
+    }
+}
 
 // switch (response)
 // {
