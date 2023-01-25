@@ -149,6 +149,12 @@ void downloadData(SocketIO &sio)
         cout << "invalid input" << endl;
         return;
     }
+    ofstream test(path);
+    if (!test.is_open()) {
+        cout << "invalid input" << endl;
+        return;
+    }
+    test.close();
     thread t(downloadFile, input, path);
     t.detach();
 }
