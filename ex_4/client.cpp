@@ -144,7 +144,7 @@ void downloadData(SocketIO &sio)
     }
     sio.write("space");
     getline(cin, path);
-    if (!isFile(path) || path.empty())
+    if (path.empty())
     {
         cout << "invalid input" << endl;
         return;
