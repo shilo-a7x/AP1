@@ -90,7 +90,8 @@ int clientSend(string s, SocketIO &sio)
     }
     string input, path;
     getline(cin, input);
-    if (input.empty())
+
+    if (input.empty() || (s.find("Welcome to the KNN Classifier") != string::npos &&input.length() != 1))
     {
         input = "ENTER";
     }

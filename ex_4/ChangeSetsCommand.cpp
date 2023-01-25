@@ -1,6 +1,7 @@
 #include "ChangeSetsCommand.h"
 #include <stdexcept>
 #include <string>
+#include <iostream>
 
 void ChangeSetsCommand::execute()
 {
