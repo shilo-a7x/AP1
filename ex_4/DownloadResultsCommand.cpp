@@ -4,14 +4,12 @@ void DownloadResultsCommand::execute() {
     if (this->getData()->getTest().empty()) {
         this->getIO()->write("please upload data");
         this->getIO()->read();
-        this->getIO()->write("");
         return;
     }
 
     if (this->getData()->getClassifiedStrings().empty()) {
         this->getIO()->write("please classify the data");
         this->getIO()->read();
-        this->getIO()->write("");
         return;
     }
     this->getIO()->write("enter a path for the csv file");
